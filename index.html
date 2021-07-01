@@ -16,47 +16,63 @@
 
 <body>
 
-<header>
-    <img class="logo" src="assets/images/logo.png" alt="logo">
-    <h1>Love letters</h1>
-    <h2>Learn to spell</h2>
-</header>
+    <header>
+        <h1>
+            <img class="logo" src="assets/images/logo.png" alt="logo">
+            Love letters
+        </h1>
+        <h2>Learn to spell</h2>
+    </header>
 
-<div id="game-field">
-    <div id="scores">
-        <div id="question-count">
-            <div class="qcount circle"></div>
-            <div class="qcount circle"></div>
-            <div class="qcount circle"></div>
-            <div class="qcount circle"></div>
-            <div class="qcount circle"></div>
-            <div class="qcount circle"></div>
-            <div class="qcount circle"></div>
-            <div class="qcount circle"></div>
-            <div class="qcount circle"></div>
-            <div class="qcount circle"></div>
-        </div>
+    <div id="game-field">
         <div id="username">
-            <h2 id="username"></h2>
+            <h3 id="username">Player: NAME</h3>
         </div>
-        <div id="lifes-left">
-            <div class="lcount circle"></div>
-            <div class="lcount circle"></div>
-            <div class="lcount circle"></div>
+        <div id="scores">
+            <div id="question-count">
+                <div class="circle-conrainer">
+                    <div class="qcount circle green"></div>
+                    <div class="qcount circle green"></div>
+                    <div class="qcount circle green"></div>
+                    <div class="qcount circle"></div>
+                    <div class="qcount circle"></div>
+                    <div class="qcount circle"></div>
+                    <div class="qcount circle"></div>
+                    <div class="qcount circle"></div>
+                    <div class="qcount circle"></div>
+                    <div class="qcount circle"></div>
+                </div>
+                <p>Question: 3 / 10</p>
+            </div>
+           
+            <div id="lifes-left">
+                <div class="circle-conrainer">
+                    <div class="lcount circle "></div>
+                    <div class="lcount circle red"></div>
+                    <div class="lcount circle red"></div>
+                </div>
+                <p>Lifes left: 2 / 3</p>
+            </div>
+        </div>
+
+        <div id="question-div">
+            <div id="task">
+                Name the item on the picture? <br> What letter does the name start with?
+            </div>
+            <img src="assets/images/question.png" alt="question" id="question">
+        </div>
+        <div id="answer-div">
+            <div>A</div>
+            <div>B</div>
+            <div>Q</div>
         </div>
     </div>
-    <div id="picture-div">
-        <p>Task</p>
-        <img src="assets/images/question.png" alt="question">
+    <div>
+        <div id="navigation">
+            <a href="index.html" id="back">Take me back</a>
+            <a href="index.html" id="reset" >Reset game</a>
+        </div>
     </div>
-    <div id="answer-div"></div>
-</div>
-<div>
-    <div id="navigation">
-        <button id="back">Take me back</button>
-        <button id="reset">Reset game</button>
-    </div>
-</div>
 
     <script src="assets/js/script.js"></script>
 </body>
