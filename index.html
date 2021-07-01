@@ -15,21 +15,47 @@
 </head>
 
 <body>
-    
+
 <header>
+    <img class="logo" src="assets/images/logo.png" alt="logo">
+    <h1>Love letters</h1>
+    <h2>Learn to spell</h2>
 </header>
 
 <div id="game-field">
     <div>
-        <div id="question-count"></div>
-        <div id="username"></div>
-        <div id="lifes-left"></div>
+        <div id="question-count">
+            <div class="qcount circle"></div>
+            <div class="qcount circle"></div>
+            <div class="qcount circle"></div>
+            <div class="qcount circle"></div>
+            <div class="qcount circle"></div>
+            <div class="qcount circle"></div>
+            <div class="qcount circle"></div>
+            <div class="qcount circle"></div>
+            <div class="qcount circle"></div>
+            <div class="qcount circle"></div>
+        </div>
+        <div id="username">
+            <h2 id="username"></h2>
+        </div>
+        <div id="lifes-left">
+            <div class="lcount circle"></div>
+            <div class="lcount circle"></div>
+            <div class="lcount circle"></div>
+        </div>
     </div>
-    <div id="picture-div"></div>
+    <div id="picture-div">
+        <p>Task</p>
+        <img src="assets/images/question.png" alt="question">
+    </div>
     <div id="answer-div"></div>
 </div>
 <div>
-    <div id="navigation"></div>
+    <div id="navigation">
+        <button id="back">Take me back</button>
+        <button id="reset">Reset game</button>
+    </div>
 </div>
 
     <script src="assets/js/script.js"></script>
