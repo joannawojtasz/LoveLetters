@@ -6,12 +6,15 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #F5F5F6;;
+    background-color: #F5F5F6;
 }
 
-h1, h2, h3 {
-    font-family: 'Mulish', sans-serif;   
+h1,
+h2,
+h3 {
+    font-family: 'Mulish', sans-serif;
 }
+
 /* --------- Header */
 
 header {
@@ -35,40 +38,65 @@ h2 {
 /* --------- Game field */
 #game-field {
     background-color: #E1E2E1;
-    padding-bottom: 10px;
     max-width: 1000px;
-    margin:0 auto;
+
+    margin: 0 auto 100px auto;
+    padding-bottom: 10px;
 }
 
-#username {
+#task {
+    background-color: #bfa7a1;
+
     color: white;
-    font-size: 2rem;
     text-align: center;
-    background-color: #8f7872;
-    padding: 4px 0;
+
+    margin: 0 auto;
+    margin-top: 30px;
+    padding: 5px 0;
 }
 
 #scores {
+    width: 100%;
+
+    margin: 0;
+    padding: 4px 0;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #BEA6A0;
-    width: 100%;
-    margin: 0;
-    padding:4px 0 ;
 }
+
+#question-count,
+#lifes-left {
+    width: 30%;
+}
+
+#username {
+    width: 30%;
+
+    color: black;
+    font-size: 2rem;
+    font-weight: 900;
+    display: flex;
+    justify-content: space-around;
+
+    padding: 4px auto;
+}
+
 
 .circle-conrainer {
     display: flex;
-    justify-content: flex-end;
 }
+
 .circle {
-    border: 1px solid #8f7872;
-    border-radius: 50%;
     height: 20px;
     width: 20px;
-    margin: 5px;
     background-color: white;
+
+    margin: 3px;
+
+    border: 1px solid #8f7872;
+    border-radius: 50%;
 }
 
 .green {
@@ -79,53 +107,63 @@ h2 {
     background-color: #d50000;
 }
 
-#question-div {
-    margin: 0 auto;
-    text-align: center;
-}
-
 #scores p {
-    padding:0 10px ;
+    padding: 0 10px;
 }
 
-#task {
-    background-color: #9b0000;
-    color: white;
-    width: 450px;
-    margin: 0 auto;
-    margin-top: 30px;
-    padding: 5px 0;
+#lifes-left .circle-conrainer {
+    justify-content: flex-end
 }
+
+#lifes-left p {
+    text-align: right;
+    ;
+}
+
+#question-div {
+    text-align: center;
+
+    margin: 0 auto;
+}
+
+
 
 #question {
-    width: 450px;
-    height: 450px;
+    width: 300px;
+    height: 300px;
 }
 
 #answer-div {
+    margin: 0 auto;
+
     display: flex;
     justify-content: space-around;
-    width: 450px;
-    margin:0 auto;
 }
 
 #answer-div div {
+    width: 300px;
     background-color: white;
-    padding: 5px 50px;
-    font-size: large;
+
+    font-size: 5rem;
     font-weight: bold;
-    margin-bottom: 20px;
+    text-align: center;
+
+    padding: 10px auto;
+    padding: 10px auto;
+    margin: 4px 20px;
+    border-width: 2px;
+    border-style: outset;
+    border-radius: 4%;
 }
+
+/* --------- Header */
 
 #navigation {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     margin: 10px;
 }
 
 a {
     color: black;
 }
-
-
-
