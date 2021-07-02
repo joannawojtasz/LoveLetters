@@ -83,7 +83,6 @@ h2 {
     padding: 4px auto;
 }
 
-
 .circle-conrainer {
     display: flex;
 }
@@ -112,7 +111,7 @@ h2 {
 }
 
 #lifes-left .circle-conrainer {
-    justify-content: flex-end
+    justify-content: flex-end;
 }
 
 #lifes-left p {
@@ -144,7 +143,7 @@ h2 {
     width: 300px;
     background-color: white;
 
-    font-size: 5rem;
+    font-size: 4rem;
     font-weight: bold;
     text-align: center;
 
@@ -167,3 +166,75 @@ h2 {
 a {
     color: black;
 }
+
+/* --------- Media queries */
+
+@media screen and (max-width: 1000px) {
+
+    header {
+        margin: 10px 0;
+    }
+
+    #game-field {
+        margin: -20px 30px 50px 30px;
+    }
+
+    #question-count {
+        width: 40%;
+    }
+
+    #username {
+        width: 25%;
+    }
+
+    #answer-div div {
+        font-size: 3rem;
+    }
+
+    #navigation {
+        justify-content: space-between
+    }
+
+    @media screen and (max-width: 650px) {
+        #task {
+            font-size: 0.8rem;
+        }
+
+        #scores p {
+            font-size: 0.7rem;
+
+            padding: 0;
+        }
+
+        #lifes-left {
+            width: 35%;
+
+            padding: 0;
+        }
+
+        #question-count {
+            width: 65%;
+        }
+
+        #username {
+            display: none;
+        }
+
+        #answer-div div {
+            width: 30%;
+            
+            margin: 0 0;
+
+            font-size: 2rem;
+        }
+
+        .circle {
+            height: 10px;
+            width: 10px;
+        }
+
+        #question {
+            width: 50vw;
+            height: 50vw;
+        }
+    }
