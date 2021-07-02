@@ -72,15 +72,20 @@ h2 {
 }
 
 #username {
-    width: 30%;
+    width: 40%;
 
     color: black;
     font-size: 2rem;
     font-weight: 900;
     display: flex;
-    justify-content: space-around;
 
     padding: 4px auto;
+    justify-content: center;
+    text-align: left;
+}
+
+#username h3 {
+    width: 100%;
 }
 
 .circle-conrainer {
@@ -124,8 +129,6 @@ h2 {
 
     margin: 0 auto;
 }
-
-
 
 #question {
     width: 300px;
@@ -179,13 +182,20 @@ a {
         margin: -20px 30px 50px 30px;
     }
 
-    #question-count {
-        width: 40%;
+    #question-count, #lifes-left {
+        width: 35%;
     }
 
     #username {
-        width: 25%;
+        width: 30%;
+        font-size: 1.2rem;
     }
+    
+    .circle {
+        height: 15px;
+        width: 15px;
+    }
+
 
     #answer-div div {
         font-size: 3rem;
@@ -222,7 +232,7 @@ a {
 
         #answer-div div {
             width: 30%;
-            
+
             margin: 0 0;
 
             font-size: 2rem;
