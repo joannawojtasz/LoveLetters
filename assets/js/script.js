@@ -26,14 +26,22 @@ form.addEventListener("submit", startGame);
 
 function startGame(event) {
     event.preventDefault();
+    let data = getFormData();
+    // data = [username, difficulty, color]
+    document.getElementById("form-modal").style.display = "none";
+    let username =  document.getElementById("username");
+    username.innerHTML = data[0].toUpperCase();
+    username.style.color = data[2];
+    runGame(data[1]);
+}
+
+function getFormData() {
     let username = document.getElementById("name").value;
     let difficulty = getAge(event);
     let color = getColor(event);
-    console.log(username, difficulty, color);
-    document.getElementById("form-modal").style.display = "none";
+    return [username, difficulty, color];
 }
-
-function getAge(event) {
+function getAge() {
     let ages = document.getElementsByClassName("age-input");
     for (let age of ages) {
         if (age.checked) {
@@ -45,7 +53,7 @@ function getAge(event) {
     }
 }
 
-function getColor(event) {
+function getColor() {
     let colors = document.getElementsByClassName("colors");
     for (let color of colors) {
         if (color.checked) {
@@ -55,4 +63,20 @@ function getColor(event) {
         } else {
         }
     }
+}
+
+function runGame(difficulty) {
+    if (difficulty == 'easy') {
+        runEasyGame()
+    } else if (difficulty == 'medium') {
+        runMediumGame()
+    } 
+}
+
+function runEasyGame() {
+    alert('Easy game not yet implemented')
+}
+
+function runMediumGame() {
+    alert('Medium game not yet implemented')
 }
