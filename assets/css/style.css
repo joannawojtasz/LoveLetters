@@ -197,7 +197,7 @@ a {
     padding: 20px;
     border: 1px solid #888;
     margin: auto calc((100vw - 540px)/2);
-    
+   
   }
   
   
@@ -233,12 +233,42 @@ a {
 }
 
 /* --------- Form */
+
+
+#form-modal .modal-content {
+    top: 15%;
+
+    padding: 100px;
+
+    margin: auto calc((100vw - 600px)/2);
+
+}
+
+form {
+    width: 400px;
+}
+
+.form-div {
+    display: flex;
+    justify-content: space-between;
+    align-content: space-around;
+    align-items: center;
+
+    padding: 20px;
+}
+#name {
+    border: solid 1px #3a3a3a;
+    padding: 10px;
+    width: 200px;
+}
+
 .age {
+    width: 100px;
     background-color: white;
+    text-align: left;
 
     display: inline-block;
 
-    border-radius: 5%;
     border: solid 1px #3a3a3a;
     padding: 5px 25px;
 }
@@ -249,10 +279,6 @@ a {
 
 .age-input {
     visibility: hidden;
-}
-
-#formModal .modal-content {
-    padding: 100px;
 }
 
  /* ----- color choice followed by w3schools */
@@ -337,9 +363,12 @@ a {
 
 #play {
     background-color: #009700;
+
     color: #FFF;
     letter-spacing: 1px;
-    padding: 25px;
+    font-size: 2rem;
+
+    padding: 25px 100px;
     border: solid 1px #009700;
     border-radius: 5%;
     margin: 30px auto;

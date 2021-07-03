@@ -87,47 +87,50 @@
     </div>
 
 
-    <div id="formModal" class="modal">
+    <div id="form-modal" class="modal">
         <div class="modal-content">
-                   <span class="close">&times;</span>
-        <form >
-            <label for="name">Players name:</label>
-            <input type="name" name="name" id="name">
-            <p>Age:</p>
+            <span class="close">&times;</span>
+            <form>
+                <div class="form-div">
+                    <label for="name">Players name:</label>
+                    <input type="name" name="name" id="name" placeholder="Name" pattern="[a-zA-Z]{0,40}">
+                </div>
+                <div class="form-div">
+                    <p>Age:</p>
 
-            <div class="age" id="easy-div">
-                <input type="radio" id="easy" name="age" value="easy" class="age-input">
-                <label for="easy"> &lt; 6</label>
-            </div>
+                    <div class="age" id="easy-div">
+                        <input type="radio" id="easy" name="age" value="easy" class="age-input">
+                        <label for="easy"> &lt; 6</label>
+                    </div>
 
-            <div class="age" id="medium-div">
-                <input type="radio" id="medium" name="age" value="medium" class="age-input"> 
-                <label for="medium"> 6 &gt;</label>
-            </div>
-
-            <p>Favourite color</p>
-            <label class="container">
-                <input type="radio" name="color" value="green" >
-                <span class="checkmark" id="green"></span>
-              </label>
-              <label class="container">
-                <input type="radio" name="color" value="blue">
-                <span class="checkmark" id="blue"></span>
-              </label>
-              <label class="container">
-                <input type="radio" name="color" value="red">
-                <span class="checkmark" id="red"></span>
-              </label>
-              <label class="container">
-                <input type="radio" name="color" value="yellow">
-                <span class="checkmark" id="yellow"></span>
-              </label>
-
-
-            <button id="play" type="button">
-                <h2>Play</h2>
-            </button>
-        </form> 
+                    <div class="age" id="medium-div">
+                        <input type="radio" id="medium" name="age" value="medium" class="age-input">
+                        <label for="medium"> 6 &gt;</label>
+                    </div>
+                </div>
+                <div class="form-div">
+                    <p>Favourite color</p>
+                    <label class="container">
+                        <input type="radio" name="color" value="green">
+                        <span class="checkmark" id="green"></span>
+                    </label>
+                    <label class="container">
+                        <input type="radio" name="color" value="blue">
+                        <span class="checkmark" id="blue"></span>
+                    </label>
+                    <label class="container">
+                        <input type="radio" name="color" value="red">
+                        <span class="checkmark" id="red"></span>
+                    </label>
+                    <label class="container">
+                        <input type="radio" name="color" value="yellow">
+                        <span class="checkmark" id="yellow"></span>
+                    </label>
+                </div>
+                <button id="play" type="button">
+                    <h2>Play</h2>
+                </button>
+            </form>
         </div>
 
 

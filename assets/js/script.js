@@ -6,17 +6,20 @@ window.onload = function () {
 // When the user clicks on <span> (x), close the modal
 document.getElementsByClassName("close")[0].onclick = function () {
     document.getElementById("myModal").style.display = "none";
-    document.getElementById("formModal").style.display = "none";
 }
 
-// When the user clicks play start the forn modal
+// When the user clicks play start the form modal
 document.getElementById("start").onclick = function () {
     document.getElementById("myModal").style.display = "none";
-    document.getElementById("formModal").style.display = "block";
+    document.getElementById("form-modal").style.display = "block";
 }
 // When the user clicks play start the game
 document.getElementById("play").onclick = function () {
-    document.getElementById("formModal").style.display = "none";
+    document.getElementById("form-modal").style.display = "none";
+}
+
+document.getElementsByClassName("close")[1].onclick = function () {
+    document.getElementById("form-modal").style.display = "none";
 }
 
 let ages = document.getElementsByClassName("age");
