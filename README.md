@@ -27,3 +27,7 @@ Love letters game is based on a simple spelling challenge. The game displays pic
 * Easier version
 
 * More difficult version
+
+### Bugs
+
+* Problem with reading the value for age/difficulty. The visual representation of a checked box appear but the value is undefined. Reason: Script modified the style of the input-div, however the box remained unchecked. Solution: removing js script for controlling style of the age-input and replacing it with css styling using :checked.
