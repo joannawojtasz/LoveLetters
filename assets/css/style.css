@@ -174,7 +174,7 @@ a {
 
 /* The Modal (background) */
 .modal {
-    display: hidden; /*Hidden by default */
+    display: none; /*Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
     left: 0;
@@ -217,6 +217,124 @@ a {
 
  /* The Play Button */ 
 
+#start {
+    background-color: #009700;
+    color: #FFF;
+    letter-spacing: 1px;
+    padding: 25px;
+    border: solid 1px #009700;
+    border-radius: 5%;
+    margin: 30px auto;
+    display: block;
+}
+
+#start:hover {
+    background-color: #3a3a3a;
+}
+
+/* --------- Form */
+.age {
+    background-color: white;
+
+    display: inline-block;
+
+    border-radius: 5%;
+    border: solid 1px #3a3a3a;
+    padding: 5px 25px;
+}
+
+.age:hover {
+    background-color: #ccc;
+}
+
+.age-input {
+    visibility: hidden;
+}
+
+#formModal .modal-content {
+    padding: 100px;
+}
+
+ /* ----- color choice followed by w3schools */
+/* The container */
+.container {
+    display: inline-block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* Hide the browser's default radio button */
+  .container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  /* Create a custom radio button */
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+   border-radius: 50%;
+   border: solid 1px #3a3a3a;
+  }
+  
+  #green {
+    background-color: #009700;
+}
+
+#blue{
+    background-color: blue;
+}
+
+
+#red{
+    background-color: red;
+}
+
+#yellow{
+    background-color: yellow;
+}
+
+  /* On mouse-over, add a grey background color */
+  #green:hover, #blue:hover, #red:hover, #yellow:hover {
+    background-color: #ccc;
+  }
+  
+  /* Create the indicator (the dot/circle - hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the indicator (dot/circle) when checked */
+  .container input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  /* Style the indicator (dot/circle) */
+  .container .checkmark:after {
+       top: 7px;
+      left: 7px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #fff;
+      border: solid 0.5px #3a3a3a;
+  }
+
+ /* ----- color choice followed by w3schools */
+
 #play {
     background-color: #009700;
     color: #FFF;
@@ -231,6 +349,10 @@ a {
 #play:hover {
     background-color: #3a3a3a;
 }
+
+
+
+
 
 /* --------- Media queries */
 
@@ -323,4 +445,3 @@ a {
             margin: auto calc((100vw - 290px)/2);
         }
     }
-
