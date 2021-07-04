@@ -20,12 +20,10 @@ document.getElementsByClassName("close")[1].onclick = function () {
     document.getElementById("form-modal").style.display = "none";
 }
 
-let form = document.getElementsByTagName('form')[0];
-
-form.addEventListener("submit", startGame);
+document.getElementsByTagName('form')[0].addEventListener("submit", startGame);
 
 function startGame(event) {
-    event.preventDefault();
+     event.preventDefault();
     let data = getFormData(); // data = [username, difficulty, color]
     document.getElementById("form-modal").style.display = "none";
     let username = document.getElementById("username");
@@ -63,6 +61,11 @@ function getColor() {
     }
 }
 
+let score = 0;
+let questionNo = 1;
+let lifes = 3;
+
+
 function runGame(difficulty) {
     displayQuestion(difficulty);
     if (difficulty == 'easy') {
@@ -93,32 +96,48 @@ function displayQuestion(difficulty) {
     } else if (difficulty == "medium") {
         console.log('this function will display question')
     }
-
 }
 
 function runEasyGame() {
-    let answer = listenForAnswer(easy);
-    let result = checkAnswer(answer);
-    incrementScores(result);
+    let answers = document.getElementsByClassName('answer');
+    for (answer of answers) {
+    answer.addEventListener('click', function(){
+        checkAnswer(this);
+    })}
+    // let choosenAnswer = listenForAnswer(easy);
+    //
+    // let result = checkAnswer(choosenAnswer);
+    // incrementScores(result);
 }
 
 function runMediumGame() {
     alert('Medium game not yet implemented')
 }
 
+// function listenForAnswer() {
 
-
-function listenForAnswer() {
-    console.log('this function will listen for users answer')
-}
+// return choosenAnswer;
+// }
 
 function checkAnswer(answer) {
-    console.log('this function will check for result')
     let correctAnswer = question.easy[0].name.charAt(0).toUpperCase();
+    if (answer.innerHTML == correctAnswer) {
+        answer.style.backgroundColor = 'green';
+        answer.style.color = 'white';
+        score++;
+        questionNo++
+        runEasyGame()
+    } else {
+        answer.style.backgroundColor = 'red';
+        answer.style.color = 'white';
+        questionNo++
+        runEasyGame()
+        lifes -= 1;
+    }  
 }
 
 function incrementScores(result) {
-    console.log("result unknown")
+    console.log("Increment scores started")
 }
 
 let question = {};
