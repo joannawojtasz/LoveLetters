@@ -61,34 +61,50 @@ function getColor() {
 }
 
 let score = 0;
-let questionNo = 0;
+let questionNo = 1;
 let lifes = 3;
 let correctAnswer = '';
-function runGame(difficulty) {
-    if (questionNo < 10) {
-        questionNo++
-        circelesColor()
-        displayQuestion(difficulty);
-        if (difficulty == 'easy') {
-            runEasyGame()
-        } else if (difficulty == 'medium') {
-            runMediumGame()
-        }
-    } else {
-        alert(`Game over. Your score ${score}`)
 
+function runGame(difficulty) {
+    if (difficulty == 'easy') {
+        runEasyGame()
+    } else if (difficulty == 'medium') {
+        runMediumGame()
+    }
+}
+
+function runEasyGame() {
+    let answers = document.getElementsByClassName('answer');
+    for (let answer of answers) {
+        answer.addEventListener("click", function () {
+            checkAnswer(this);
+        })
+    }
+    PlayEasyGame()
+}
+
+function PlayEasyGame() {
+    updateScores()
+    if (lifes == 0) {
+        alert("Game over. Try again!");
+    } else {
+        if (questionNo <= 10) {
+            correctAnswer = '';
+            questionNo++
+            displayQuestion('easy');
+        } else {
+            alert(`Game over. Your score ${score}`)
+            document.getElementById("myModal").style.display = "block";
+        }
     }
 }
 
 function displayQuestion(difficulty) {
     if (difficulty == "easy") {
         let n = Math.floor(Math.random() * 3);
-        console.log('new game')
-
         document.getElementById("question").src = question.easy[n].image;
-
         let answers = document.getElementsByClassName('answer');
-        let correctAnswer = question.easy[n].name.charAt(0).toUpperCase();
+        correctAnswer = question.easy[n].name.charAt(0).toUpperCase();
         for (answer of answers) {
             answer.style.backgroundColor = 'white';
             answer.style.color = 'black';
@@ -110,15 +126,7 @@ function displayQuestion(difficulty) {
     }
 }
 
-function runEasyGame() {
-    let answers = document.getElementsByClassName('answer');
-    for (let answer of answers) {
-        answer.addEventListener("click", function () {
-            checkAnswer(this);
-            console.log(this)
-        })
-    }
-}
+
 
 
 
@@ -134,11 +142,10 @@ function checkAnswer(answer) {
     } else {
         answer.style.backgroundColor = 'red';
         answer.style.color = 'white';
- 
+
         lifes -= 1;
     }
-    console.log(questionNo, score, lifes)
-    setTimeout(runGame, 300, 'easy');
+    setTimeout(PlayEasyGame, 100, 'easy');
 }
 
 function incrementScores(result) {
@@ -163,19 +170,24 @@ question = {
     ]
 }
 
-function circelesColor() {
+function updateScores() {
     let questionCount = document.getElementsByClassName('qcount');
+    let questionLabel = document.getElementById('qcount');
     let lifesCount = document.getElementsByClassName('lcount');
+        let lifesLabel = document.getElementById('lcount');
     for (let i = 0; i < 10; i++) {
         questionCount[i].style.backgroundColor = 'white';
     }
     for (let i = 0; i < questionNo; i++) {
         questionCount[i].style.backgroundColor = 'green';
     }
+    questionLabel.innerHTML = `Question: ${questionNo} / 10`;
     for (let i = 0; i < 3; i++) {
         lifesCount[i].style.backgroundColor = 'white';
     }
     for (let i = 0; i < lifes; i++) {
         lifesCount[i].style.backgroundColor = 'red';
     }
+    lifesLabel.innerHTML = `Lifes left: ${lifes}/ 3`;
+    console.log(lifes)
 }
