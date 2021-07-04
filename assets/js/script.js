@@ -35,8 +35,8 @@ function play(event) {
 
 function getFormData() {
     let username = document.getElementById("name").value;
-    let difficulty = getAge(event);
-    let color = getColor(event);
+    let difficulty = getAge(Event);
+    let color = getColor(Event);
     return [username, difficulty, color];
 }
 
@@ -46,7 +46,6 @@ function getAge() {
         if (age.checked) {
             let value = age.value;
             return value;
-            break;
         } else {}
     }
 }
@@ -57,7 +56,6 @@ function getColor() {
         if (color.checked) {
             let value = color.value;
             return value;
-            break;
         } else {}
     }
 }
@@ -65,33 +63,36 @@ function getColor() {
 let score = 0;
 let questionNo = 0;
 let lifes = 3;
-
-
-
+let correctAnswer = '';
 function runGame(difficulty) {
-    let correctAnswer = '';
-    displayQuestion(difficulty);
-    if (difficulty == 'easy') {
-        runEasyGame()
-    } else if (difficulty == 'medium') {
-        runMediumGame()
+    if (questionNo < 10) {
+        questionNo++
+        circelesColor()
+        displayQuestion(difficulty);
+        if (difficulty == 'easy') {
+            runEasyGame()
+        } else if (difficulty == 'medium') {
+            runMediumGame()
+        }
+    } else {
+        alert(`Game over. Your score ${score}`)
+
     }
 }
 
 function displayQuestion(difficulty) {
-    questionNo++
-    circelesColor()
     if (difficulty == "easy") {
         let n = Math.floor(Math.random() * 3);
+        console.log('new game')
 
         document.getElementById("question").src = question.easy[n].image;
 
         let answers = document.getElementsByClassName('answer');
-        correctAnswer = question.easy[n].name.charAt(0).toUpperCase();
+        let correctAnswer = question.easy[n].name.charAt(0).toUpperCase();
         for (answer of answers) {
             answer.style.backgroundColor = 'white';
             answer.style.color = 'black';
-            answer.innerHTML = ''
+            answer.innerHTML = '';
             let letters = ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I',
                 'O', 'P', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L',
                 'Z', 'X', 'C', 'V', 'B', 'N', 'M',
@@ -111,16 +112,15 @@ function displayQuestion(difficulty) {
 
 function runEasyGame() {
     let answers = document.getElementsByClassName('answer');
-    for (answer of answers) {
-        answer.addEventListener('click', function () {
+    for (let answer of answers) {
+        answer.addEventListener("click", function () {
             checkAnswer(this);
+            console.log(this)
         })
     }
-    // let choosenAnswer = listenForAnswer(easy);
-    //
-    // let result = checkAnswer(choosenAnswer);
-    // incrementScores(result);
 }
+
+
 
 function runMediumGame() {
     alert('Medium game not yet implemented')
@@ -131,15 +131,14 @@ function checkAnswer(answer) {
         answer.style.backgroundColor = 'green';
         answer.style.color = 'white';
         score++;
-        setTimeout(runGame, 300, 'easy');
-
     } else {
         answer.style.backgroundColor = 'red';
         answer.style.color = 'white';
-
-        setTimeout(runGame, 300, 'easy');
+ 
         lifes -= 1;
     }
+    console.log(questionNo, score, lifes)
+    setTimeout(runGame, 300, 'easy');
 }
 
 function incrementScores(result) {
@@ -161,24 +160,22 @@ question = {
             name: 'snowman',
         },
 
-
     ]
 }
 
 function circelesColor() {
     let questionCount = document.getElementsByClassName('qcount');
     let lifesCount = document.getElementsByClassName('lcount');
-    for (let i = 0; i < 10; i++ ) {
-        questionCount[i].style.backgroundColor = 'white'; 
-     }
-    for (let i = 0; i < questionNo; i++ ) {
-        questionCount[i].style.backgroundColor = 'green'; 
-     }
-     for (let i = 0; i < 3; i++ ) {
-        lifesCount[i].style.backgroundColor = 'white'; 
-     }
-    for (let i = 0; i < lifes; i++ ) {
-        lifesCount[i].style.backgroundColor = 'red'; 
-     }
-
+    for (let i = 0; i < 10; i++) {
+        questionCount[i].style.backgroundColor = 'white';
+    }
+    for (let i = 0; i < questionNo; i++) {
+        questionCount[i].style.backgroundColor = 'green';
+    }
+    for (let i = 0; i < 3; i++) {
+        lifesCount[i].style.backgroundColor = 'white';
+    }
+    for (let i = 0; i < lifes; i++) {
+        lifesCount[i].style.backgroundColor = 'red';
+    }
 }

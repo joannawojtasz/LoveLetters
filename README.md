@@ -30,4 +30,10 @@ Love letters game is based on a simple spelling challenge. The game displays pic
 
 ### Bugs
 
-* Problem with reading the value for age/difficulty. The visual representation of a checked box appear but the value is undefined. Reason: Script modified the style of the input-div, however the box remained unchecked. Solution: removing js script for controlling style of the age-input and replacing it with css styling using :checked.
+* Problem: There is with reading the value for age/difficulty. The visual representation of a checked box appear but the value is undefined. 
+Reason: Script modified the style of the input-div, however the box remained unchecked. 
+Solution: removing js script for controlling style of the age-input and replacing it with css styling using :checked.
+
+* Problem: The games runs multiple times. At first attempt it runs once, than twice, four time and so on. 
+Reason: The event listeners are added each time the event litener is run.
+Solution: New place for event listeners in the game script.
