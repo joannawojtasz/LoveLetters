@@ -30,7 +30,7 @@ function play(event) {
     let username = document.getElementById("username");
     username.innerHTML = data[0].toUpperCase();
     username.style.color = data[2];
-    runGame(data[1]);
+    startGame(data[1]);
 }
 
 function getFormData() {
@@ -65,28 +65,31 @@ let questionNo = 1;
 let lifes = 3;
 let correctAnswer = '';
 
-function runGame(difficulty) {
-    if (difficulty == 'easy') {
-        runEasyGame()
-    } else if (difficulty == 'medium') {
-        runMediumGame()
-    }
-}
-
-function runEasyGame() {
+function startGame(difficulty) {
     let answers = document.getElementsByClassName('answer');
-    for (let answer of answers) {
-        answer.addEventListener("click", function () {
-            checkAnswer(this);
-        })
+    if (difficulty == 'easy') {
+        for (let answer of answers) {
+            answer.addEventListener("click", function () {
+                checkAnswer('easy', this);
+            })
+        }
+        playEasyGame()
+    } else if (difficulty == 'medium') {
+        playMediumGame()
     }
-    PlayEasyGame()
 }
 
-function PlayEasyGame() {
+// function runMediumGame() {
+//     displayQuestion('medium');
+// }
+
+function playEasyGame() {
     updateScores()
     if (lifes == 0) {
         alert("Game over. Try again!");
+        score = 0;
+        questionNo = 1;
+        lifes = 3;
     } else {
         if (questionNo <= 10) {
             correctAnswer = '';
@@ -99,11 +102,34 @@ function PlayEasyGame() {
     }
 }
 
+function playMediumGame() {
+updateScores()
+    if (lifes <= 0) {
+        alert("Game over. Try again!");
+        score = 0;
+        questionNo = 1;
+        lifes = 3;
+    } else {
+        if (questionNo <= 10) {
+            correctAnswer = '';
+            questionNo++
+            displayQuestion('medium');
+            givenAnswer = document.getElementById("useranswer");
+            givenAnswer.onkeyup = function () {
+                checkAnswer('medium', givenAnswer)
+            };
+        } else {
+            alert(`Game over. Your score ${score}`)
+            document.getElementById("myModal").style.display = "block";
+        }
+    }
+}
+
 function displayQuestion(difficulty) {
+    let n = Math.floor(Math.random() * 3);
+    document.getElementById("question").src = question.easy[n].image;
+    let answers = document.getElementsByClassName('answer');
     if (difficulty == "easy") {
-        let n = Math.floor(Math.random() * 3);
-        document.getElementById("question").src = question.easy[n].image;
-        let answers = document.getElementsByClassName('answer');
         correctAnswer = question.easy[n].name.charAt(0).toUpperCase();
         for (answer of answers) {
             answer.style.backgroundColor = 'white';
@@ -122,30 +148,53 @@ function displayQuestion(difficulty) {
         }
         answers[Math.floor(Math.random() * 3)].innerHTML = correctAnswer;
     } else if (difficulty == "medium") {
-        console.log('this function will display question')
+        correctAnswer = question.easy[n].name;
+        answers[0].style.display = 'none';
+        answers[2].style.display = 'none';
+        answers[1].innerHTML = '';
+        let input = document.createElement("input");
+        input.type = "text";
+        input.name = "useranswer";
+        input.id = "useranswer";
+        input.style = "text-transform:uppercase";
+        input.placeholder = "Type here";
+        answers[1].appendChild(input);
+        answers[1].children[0].style.width = '252px';
+        answers[1].children[0].style.verticalAlign = 'middle';
+        answers[1].children[0].style.padding = '10px';
+        answers[1].children[0].style.color = '#000';
+        answers[1].children[0].style.fontSize = '2rem';
+        input.focus();
     }
 }
 
-
-
-
-
-function runMediumGame() {
-    alert('Medium game not yet implemented')
-}
-
-function checkAnswer(answer) {
-    if (answer.innerHTML == correctAnswer) {
-        answer.style.backgroundColor = 'green';
-        answer.style.color = 'white';
-        score++;
-    } else {
-        answer.style.backgroundColor = 'red';
-        answer.style.color = 'white';
-
-        lifes -= 1;
+function checkAnswer(difficulty, answer) {
+    if (difficulty == 'easy') {
+        if (answer.innerHTML == correctAnswer) {
+            answer.style.backgroundColor = 'green';
+            answer.style.color = 'white';
+            score++;
+        } else {
+            answer.style.backgroundColor = 'red';
+            answer.style.color = 'white';
+            lifes -= 1;
+        }
+        setTimeout(playEasyGame, 200);
+    } else if (difficulty == 'medium') {
+        if (givenAnswer.value == correctAnswer) {
+            score++;
+            setTimeout(playMediumGame, 200);
+        } else {
+            if (correctAnswer.startsWith(givenAnswer.value)) {
+                givenAnswer.style.border = 'solid 10px green';
+            } else {
+                console.log(correctAnswer, givenAnswer.value, correctAnswer.startsWith(givenAnswer.value))
+                givenAnswer.style.border = 'solid 10px red';
+                lifes -= 1;
+                updateLifesCount ()
+            }          
+        }   
     }
-    setTimeout(PlayEasyGame, 100, 'easy');
 }
 
 function incrementScores(result) {
@@ -166,15 +215,16 @@ question = {
             image: 'assets/images/snowman.png',
             name: 'snowman',
         },
-
     ]
 }
 
 function updateScores() {
+    updateQuestionCount ()
+    updateLifesCount ()
+}
+function updateQuestionCount () {
     let questionCount = document.getElementsByClassName('qcount');
     let questionLabel = document.getElementById('qcount');
-    let lifesCount = document.getElementsByClassName('lcount');
-        let lifesLabel = document.getElementById('lcount');
     for (let i = 0; i < 10; i++) {
         questionCount[i].style.backgroundColor = 'white';
     }
@@ -182,6 +232,11 @@ function updateScores() {
         questionCount[i].style.backgroundColor = 'green';
     }
     questionLabel.innerHTML = `Question: ${questionNo} / 10`;
+}
+
+function updateLifesCount () {
+    let lifesCount = document.getElementsByClassName('lcount');
+    let lifesLabel = document.getElementById('lcount');
     for (let i = 0; i < 3; i++) {
         lifesCount[i].style.backgroundColor = 'white';
     }
