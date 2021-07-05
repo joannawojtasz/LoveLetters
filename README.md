@@ -4,7 +4,9 @@ A simple webbased application targeted at small kids aiming at practicing spelli
 
 Love letters game is based on a simple spelling challenge. The game displays picture and asks about the name of presented item. On the easier lever targeting younger players are asked to choose the first letter of items name (by clicking with the mouse or choosing letter on keybord). Older users are asked to type while name of presented item using the keybord. The correct/wrong answers will be counted resulting in a win or loose.
 
-## Learn spelling - game for kids
+## UX
+
+### Learn spelling - game for kids
 
 ### User stories
 
@@ -27,21 +29,45 @@ Love letters game is based on a simple spelling challenge. The game displays pic
 * Easier version
 
 * More difficult version
+ 
 
-### Bugs
+### Changes
 
-* Problem: There is with reading the value for age/difficulty. The visual representation of a checked box appear but the value is undefined. 
+### Features
+
+
+### Encountered bugs
+- [x] game does not work
+
+* Problem: There is problem with reading the value for age/difficulty. The visual representation of a checked box appear but the value is undefined. 
 Reason: Script modified the style of the input-div, however the box remained unchecked. 
 Solution: removing js script for controlling style of the age-input and replacing it with css styling using :checked.
 
-* Problem: The games runs multiple times. At first attempt it runs once, than twice, four time and so on. 
+- [x] game runs multiple times
+* Problem: The games runs multiple times on easy level. At first attempt it runs once, than twice, four time and so on. 
 Reason: The event listeners are added each time the event litener is run.
 Solution: New place for event listeners in the game script.
 
+- [x] game runs multiple times
 * Problem: The games runs multiple times on medium level. 
 Reason: See above.
 Solution: New place for event listeners in the game script.
 
+- [x] game runs multiple times 
 * Problem: The games runs multiple times on medium level when user fails. 
 Reason: While game displays game result the script continue checking the answer.
 Solution: Rearange the script. Set a new function for displaying result that turns off checking the answer.
+
+- [ ]
+
+### Deployment
+
+### Credits
+* Modals were buid based on code from w3 schools example
+[How TO - CSS/JS Modal](https://www.w3schools.com/howto/howto_css_modals.asp)
+
+* The buttons based on radio buttons were build based on w3 examples and petrabarus's  jsfiddles
+
+[How TO - Custom Checkbox](https://jsfiddle.net/petrabarus/pPgS7/)
+[Remove Circle Button in Radio](https://jsfiddle.net/petrabarus/pPgS7/)
+
