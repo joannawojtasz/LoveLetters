@@ -22,19 +22,37 @@ Love letters game is based on a simple spelling challenge. The game displays pic
 
 ### Wireframe:
 
-* Index page
+* Start page
+
+![start page](assets/images/start.png)
 
 * User details form
 
+![form](assets/images/form.png)
+
 * Easier version
 
+![easy game](assets/images/easy.png)
+
 * More difficult version
- 
+
+![medium page](assets/images/medium.png) 
 
 ### Changes
 
 ### Features
 
+#### implemented
+
+#### future
+
+Love letters gives possibility to add new questions and eaven an advanced difficulty level.
+
+1. For adding more pictures: 
+
+* Add pictures to pictures folder and modify question array by adding new records.
+
+2. For adding new difficulty level:
 
 ### Encountered bugs
 - [x] game does not work
