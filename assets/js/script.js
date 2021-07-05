@@ -160,7 +160,7 @@ function displayMedium() {
 }
 
 function displayQuestion(difficulty) {
-    let n = Math.floor(Math.random() * 3);
+    let n = Math.floor(Math.random() * 12);
     document.getElementById("question").src = question.easy[n].image;
     let answers = document.getElementsByClassName('answer');
     if (difficulty == "easy") {
@@ -248,10 +248,7 @@ function incrementScores(result) {
 
 let question = {};
 question = {
-    easy: [{
-            image: 'assets/images/question.png',
-            name: 'question',
-        },
+    easy: [
         {
             image: 'assets/images/bee.png',
             name: 'bee',
@@ -259,6 +256,42 @@ question = {
         {
             image: 'assets/images/snowman.png',
             name: 'snowman',
+        },
+        {
+            image: 'assets/images/ball.png',
+            name: 'ball',
+        },
+        {
+            image: 'assets/images/blocks.png',
+            name: 'blocks',
+        },
+        {
+            image: 'assets/images/cat.png',
+            name: 'cat',
+        },
+        {
+            image: 'assets/images/dinosaur.png',
+            name: 'dinosaur',
+        },
+        {
+            image: 'assets/images/doll.png',
+            name: 'doll',
+        },
+        {
+            image: 'assets/images/elephant.png',
+            name: 'elephant',
+        },
+        {
+            image: 'assets/images/kangaroo.png',
+            name: 'kangaroo',
+        },
+        {
+            image: 'assets/images/lion.png',
+            name: 'lion',
+        },
+        {
+            image: 'assets/images/shark.png',
+            name: 'shark',
         },
     ]
 }
