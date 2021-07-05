@@ -37,3 +37,11 @@ Solution: removing js script for controlling style of the age-input and replacin
 * Problem: The games runs multiple times. At first attempt it runs once, than twice, four time and so on. 
 Reason: The event listeners are added each time the event litener is run.
 Solution: New place for event listeners in the game script.
+
+* Problem: The games runs multiple times on medium level. 
+Reason: See above.
+Solution: New place for event listeners in the game script.
+
+* Problem: The games runs multiple times on medium level when user fails. 
+Reason: While game displays game result the script continue checking the answer.
+Solution: Rearange the script. Set a new function for displaying result that turns off checking the answer.
