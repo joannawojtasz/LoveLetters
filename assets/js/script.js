@@ -10,14 +10,14 @@ document.getElementById("start").onclick = function () {
     document.getElementById("initial-modal").style.display = "none";
     document.getElementById("form-modal").style.display = "block";
 }
-/*starting the game open a form
-for uset to add information*/
-// document.getElementById("play").onclick = function () {
-//     document.getElementById("form-modal").style.display = "none";
-// }
 
 document.getElementsByClassName("close")[1].onclick = function () {
     document.getElementById("form-modal").style.display = "none";
+}
+
+document.getElementById('reset').onclick = function () {
+    document.getElementById("initial-modal").style.display = "none";
+    document.getElementById("form-modal").style.display = "block";
 }
 
 document.getElementsByTagName('form')[0].addEventListener("submit", play);
@@ -68,7 +68,9 @@ let fail = 0;
 
 function startGame(difficulty) {
     let answers = document.getElementsByClassName('answer');
+    let task = document.getElementById('task');
     if (difficulty == 'easy') {
+        task.innerHTML = 'Name the item on the picture. <br> What letter does the name start with?';
         for (let answer of answers) {
             answer.addEventListener("click", function () {
                 checkAnswer('easy', this);
@@ -76,6 +78,7 @@ function startGame(difficulty) {
         }
         newEasyGame()
     } else if (difficulty == 'medium') {
+        task.innerHTML = 'Name the item on the picture.';
         displayMedium();
         givenAnswer = document.getElementById("useranswer");
         newMediumGame()
@@ -93,17 +96,17 @@ function newEasyGame() {
         setTimeout(continueEasyGame, 1500);
 
     } else {
-        if (questionNo <= 10) {
+        if (questionNo < 10) {
             correctAnswer = '';
             questionNo++
             displayQuestion('easy');
         } else {
-            document.getElementById("message").innerHTML = `Game over. Your score ${score}`;
+            document.getElementById("message").innerHTML = `Game over. Your score: ${score}`;
             document.getElementById("result-modal").style.display = "block";
             score = 0;
             questionNo = 1;
             lifes = 3;
-            setTimeout(continueEasyGame, 1500);
+            setTimeout(continueEasyGame, 5000);
 
         }
     }
@@ -127,8 +130,12 @@ function newMediumGame() {
                 checkAnswer('medium', givenAnswer)
             };
         } else {
-            alert(`Game over. Your score ${score}`)
-            document.getElementById("myModal").style.display = "block";
+            document.getElementById("message").innerHTML = `Game over. Your score ${score}`;
+            document.getElementById("result-modal").style.display = "block";
+            score = 0;
+            questionNo = 1;
+            lifes = 3;
+            setTimeout(continueMediumGame, 1500);
         }
     }
 }
@@ -205,11 +212,9 @@ function checkAnswer(difficulty, useranswer) {
             if (correctAnswer.startsWith(givenAnswer.value)) {
                 givenAnswer.style.border = 'solid 10px green';
             } else {
-                console.log(fail)
                 if (fail == 0) {
                     lifes -= 1;
                     fail += 1;
-                    console.log(fail, 'here')
                     updateLifesCount();
                 } else if (fail < 5) {
                     fail += 1;
@@ -217,7 +222,7 @@ function checkAnswer(difficulty, useranswer) {
                     document.getElementById("message").innerHTML = `The correct sepelling is <span style="color:red; font-size:2rem">${correctAnswer.toUpperCase()}</span>`;
                     document.getElementById("result-modal").style.display = "block";
                     givenAnswer.onkeyup = function () {};
-                    setTimeout(continueMediumGame, 2000);
+                    setTimeout(continueMediumGame, 1500);
                 }
                 givenAnswer.style.border = 'solid 10px red';
             }
