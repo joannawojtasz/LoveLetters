@@ -76,7 +76,10 @@ Solution: New place for event listeners in the game script.
 Reason: While game displays game result the script continue checking the answer.
 Solution: Rearange the script. Set a new function for displaying result that turns off checking the answer.
 
-- [ ]
+- [x] reseting game 
+* Problem: The game does not resolve after game is over. The scores are resetted and old picture remains on the display.
+* Reason: Error in setTimeout function. setTimeout cannot pass value to displayQuestion function.
+* Solution: use othe function to restart the game.
 
 ### Deployment
 

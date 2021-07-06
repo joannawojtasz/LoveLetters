@@ -490,10 +490,7 @@ form {
 }
 
 @media screen and (max-width: 650px) {
-
-    
-
-    #logo {
+    .logo {
         height: 40px;
     }
     h1 {
@@ -510,14 +507,14 @@ form {
 
     #main-field {
         max-width: 85%;
-        height: 375px;
+        height: 400px;
     }
 
     #description {
         width: 70%;
         padding: 10px;
         margin: 0 auto;
-        font-size: 0.7rem;
+        font-size: 0.9rem;
     }
     .pulse-button {
         line-height: 50px;

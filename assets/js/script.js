@@ -206,6 +206,7 @@ function displayQuestion(difficulty) {
         document.getElementById('answer-div-medium').style.display = 'block';
         correctAnswer = currentQuestionData.name;
         let useranswer = document.getElementById('useranswer');
+        useranswer.focus();
         useranswer.onkeyup = function () {
             checkAnswer('medium', useranswer);
         };
@@ -219,15 +220,15 @@ function displayQuestion(difficulty) {
 function startNewRound(difficulty) {
     updateScores();
     if (lifesRemaining == 0) {
-        gameOver();
-        setTimeout(displayQuestion(difficulty), 1500);
+        gameOver(difficulty);
+        setTimeout(resetScores, 2000);
     } else {
         if (currentQuestionNo <= 10) {
             correctAnswer = '';
             displayQuestion(difficulty);
         } else {
-            gameOver();
-            setTimeout(displayQuestion(difficulty), 2000);
+            gameOver(difficulty);
+            setTimeout(resetScores, 3000);
         }
     }
 }
@@ -316,7 +317,6 @@ function continueMediumGame() {
  */
 function resetInputField() {
     document.getElementById('useranswer').value = '';
-    document.getElementById('useranswer').focus();
     document.getElementById('useranswer').style.border = 'solid 10px  white';
 }
 
@@ -363,7 +363,8 @@ function getRandomAlphabet() {
 function gameOver() {
     document.getElementById("message").innerHTML = `Game over. Your score: <span style="color:#c20000; font-size:2rem">${score}</span>. <br> Try again!`;
     document.getElementById("result-modal").style.display = "block";
-    resetScores();
+    displayQuestion(difficulty);
+
 }
 /**
  * Resets the scores
@@ -373,6 +374,7 @@ function resetScores() {
     score = 0;
     currentQuestionNo = 1;
     lifesRemaining = TOTAL_LIFES;
+    document.getElementById("result-modal").style.display = "none";
 }
 
 /**
