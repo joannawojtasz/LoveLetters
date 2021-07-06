@@ -435,16 +435,20 @@ form {
 #play, #restart {
     width: 250px;
     background-color: #009700;
-    color: #FFF;
-    letter-spacing: 1px;
-    font-size: 3rem;
-    font-family: 'Mulish', sans-serif;
-    font-weight: 900;
+    
     display: block;
     padding: 25px 100px;
     border-radius: 5%;
     border-style: outset;
     margin: 50px auto 0 auto;
+}
+
+#play h2, #restart h2{
+    color: #FFF;
+    letter-spacing: 1px;
+    font-size: 3rem;
+    font-family: 'Mulish', sans-serif;
+    font-weight: 900;
 }
 
 #play:hover, #restart:hover {
