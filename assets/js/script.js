@@ -76,15 +76,11 @@ const TOTAL_QUESTIONS = 10;
 
 function play(event) {
     event.preventDefault();
-    let {
-        username,
-        difficulty,
-        color
-    } = getFormData();
+    let {username, difficulty, color} = getFormData();
     document.getElementById("form-modal").style.display = "none";
-    let username = document.getElementById("username");
-    username.innerHTML = username.toUpperCase();
-    username.style.color = color;
+    let displayname = document.getElementById('username');
+    displayname.innerHTML = username.toUpperCase();
+    displayname.style.color = color;
     startGame(difficulty);
 }
 
@@ -129,7 +125,7 @@ let fail = 0;
  * according to chosen level and starting displayGame function
  */
 function startGame(difficulty) {
-    
+
     if (difficulty == 'easy') {
         for (let answer of answers) {
             answer.addEventListener('click', function () {
