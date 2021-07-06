@@ -89,6 +89,10 @@ Solution: Rearange the script. Set a new function for displaying result that tur
 
 * The buttons based on radio buttons were build based on w3 examples and petrabarus's  jsfiddles
 
-[How TO - Custom Checkbox](https://jsfiddle.net/petrabarus/pPgS7/)
+[How TO - Custom Checkbox](https://jsfiddle.net/petrabarus/pPgS7/)  
+
 [Remove Circle Button in Radio](https://jsfiddle.net/petrabarus/pPgS7/)
+
+* Animation was created according to w3 schools instructions
+[CSS Animations](https://www.w3schools.com/css/css3_animations.asp)
 

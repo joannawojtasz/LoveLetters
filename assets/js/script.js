@@ -4,13 +4,11 @@ window.onload = function () {
     document.getElementById("form-modal").style.display = "block";
 };
 
+
 document.getElementsByClassName("close")[0].onclick = function () {
-    document.getElementById("form-modal").style.display = "none";
-};
-document.getElementsByClassName("close")[1].onclick = function () {
     document.getElementById("result-modal").style.display = "none";
 };
-document.getElementsByClassName("close")[2].onclick = function () {
+document.getElementsByClassName("close")[1].onclick = function () {
     document.getElementById("correct-modal").style.display = "none";
 };
 document.getElementById("restart").onclick = function () {

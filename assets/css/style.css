@@ -70,7 +70,7 @@ ul {
 
 .pulse-button {
     display: block;
-    background-color: #c20000;
+    background-color: #009700;
     width: 250px;
     text-align: center;
     line-height: 75px;
@@ -84,7 +84,7 @@ ul {
 .pulse-button:hover {
     animation: none;
 }
-
+/* Animation built based on w3 examples*/
 @keyframes pulse {
     0% {
         transform: scale(.99);
@@ -432,18 +432,22 @@ form {
     border: solid 0.5px #3a3a3a;
 }
 
-#play {
+#play, #restart {
+    width: 250px;
     background-color: #009700;
     color: #FFF;
     letter-spacing: 1px;
-    font-size: 2rem;
+    font-size: 3rem;
+    font-family: 'Mulish', sans-serif;
+    font-weight: 900;
     display: block;
     padding: 25px 100px;
     border-radius: 5%;
+    border-style: outset;
     margin: 50px auto 0 auto;
 }
 
-#play:hover {
+#play:hover, #restart:hover {
     background-color: #3a3a3a;
 }
 
@@ -601,7 +605,7 @@ form {
         width: 50px;
     }
 
-    #play {
+    #play, #restart {
         padding-right: 75px;
     }
 
