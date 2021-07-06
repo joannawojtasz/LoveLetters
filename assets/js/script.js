@@ -19,9 +19,8 @@ document.getElementById("start").onclick = function () {
 };
 
 document.getElementById('reset').onclick = function () {
-    document.getElementById("initial-modal").style.display = "none";
-    resetScores(); //temp
-    document.getElementById("form-modal").style.display = "block";
+    resetScores(); 
+    // document.getElementById("form-modal").style.display = "block";
 };
 
 document.getElementsByTagName('form')[0].addEventListener("submit", play);
@@ -202,8 +201,6 @@ function displayQuestion(difficulty) {
         }
         // Replace any of the 3 with correct answer
         answers[Math.floor(Math.random() * 3)].innerHTML = correctAnswer;
-        answers[Math.floor(Math.random() * 3)].innerHTML = correctAnswer;
-
     } else if (difficulty == "medium") {
         resetInputField();
         task.innerHTML = 'Name the item on the picture.';
@@ -227,7 +224,7 @@ function startNewRound(difficulty) {
         gameOver();
         setTimeout(displayQuestion(difficulty), 1500);
     } else {
-        if (currentQuestionNo < 10) {
+        if (currentQuestionNo <= 10) {
             correctAnswer = '';
             displayQuestion(difficulty);
         } else {

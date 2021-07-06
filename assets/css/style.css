@@ -43,24 +43,25 @@ h2 {
 }
 
 #task {
-        width: 100%;
+    width: 100%;
     margin: 0;
-    padding: 4px 0;
+    padding: 14px 0;
     text-align: center;
-  
+
 }
 
 #scores {
-      background-color: #bfa7a1;
+    background-color: #bfa7a1;
     color: white;
-    
+
     margin: 0 auto;
     margin-top: 30px;
-    padding: 5px 0;
+    padding: 5px 3px;
 
     display: flex;
     justify-content: space-between;
     align-items: center;
+
 }
 
 #question-count,
@@ -142,13 +143,16 @@ h2 {
 }
 
 #answer-div-medium {
-    width='252px';
     display: none;
-    vertical-align: middle;
-    style.padding: 10px;
-    style.color: #000;
-    font-size: 2rem;
+    padding: 10px;
+    text-align: center;
+}
+
+#useranswer {
+    padding: 10px;
     text-transform: uppercase;
+    color: #000;
+    font-size: 2rem;
 }
 
 /* --------- Navigation */
@@ -421,6 +425,10 @@ form {
     #question {
         width: 50vw;
         height: 50vw;
+    }
+
+    #useranswer {
+        font-size: 1rem;
     }
 
     .modal-content {
