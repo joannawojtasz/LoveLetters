@@ -14,25 +14,23 @@ h2,
 h3 {
     font-family: 'Mulish', sans-serif;
 }
-
-
-
 /* --------- Header */
+
 header {
     text-align: center;
     margin: 30px 0;
     color: #3a3a3a;
 }
 
-.index-header logo {
+#logo {
     height: 65px;
 }
 
-.index-header h1 {
+h1 {
     font-size: 5rem;
 }
 
-.index-header h2 {
+h2 {
     font-size: 1.5rem;
 }
 
@@ -74,12 +72,9 @@ ul {
 .pulse-button {
     display: block;
     background-color: #c20000;
-    width: 300px;
-    height: 100px;
-    font-size: 1.5em;
-    text-transform: uppercase;
+    width: 250px;
     text-align: center;
-    line-height: 100px;
+    line-height: 75px;
     border: none;
     border-radius: 4%;
     border-style: outset;
@@ -115,8 +110,11 @@ ul {
 
 #opengame {
     text-decoration: none;
-    letter-spacing: 3px;
+    letter-spacing: 1px;
     color: #fff;
+    font-size: 3rem;
+    font-family: 'Mulish', sans-serif;
+    font-weight: 900;
 }
 
 /* --------- Navigation */
@@ -131,15 +129,15 @@ a {
 }
 
 /* --------- Game header */
-h1 {
+#game-header h1 {
     font-size: 3rem;
 }
 
-h2 {
+#game-header h2 {
     font-size: 1rem;
 }
 
-.logo {
+#game-header .logo {
     height: 40px;
 }
 
@@ -207,7 +205,7 @@ h2 {
 }
 
 .red {
-    background-color: #d50000;
+    background-color: #c20000; 
 }
 
 #scores p {
@@ -321,7 +319,7 @@ h2 {
 /* --------- Form modal*/
 #form-modal .modal-content {
     top: 15%;
-    margin: auto calc((100vw - 600px)/2);
+    margin: auto calc((100vw - 500px)/2);
 }
 
 form {
@@ -401,7 +399,7 @@ form {
 }
 
 #red {
-    background-color: red;
+    background-color: #c20000;
 }
 
 #yellow {
