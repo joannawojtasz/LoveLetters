@@ -360,7 +360,7 @@ function getRandomAlphabet() {
  * Displays game over modal with score information
  * and calls for resetting score 
  */
-function gameOver() {
+function gameOver(difficulty) {
     document.getElementById("message").innerHTML = `Game over. Your score: <span style="color:#c20000; font-size:2rem">${score}</span>. <br> Try again!`;
     document.getElementById("result-modal").style.display = "block";
     displayQuestion(difficulty);
@@ -371,10 +371,10 @@ function gameOver() {
  * to use before new game
  */
 function resetScores() {
+    document.getElementById("result-modal").style.display = "none";
     score = 0;
     currentQuestionNo = 1;
     lifesRemaining = TOTAL_LIFES;
-    document.getElementById("result-modal").style.display = "none";
 }
 
 /**
