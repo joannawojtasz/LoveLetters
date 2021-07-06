@@ -148,8 +148,7 @@ function startGame(difficulty) {
         displayQuestion(difficulty);
     } else if (difficulty == 'medium') {
         displayQuestion(difficulty);
-    };
-}
+    }
 }
 
 /**
@@ -160,7 +159,7 @@ function displayQuestion(difficulty) {
     let questions = [];
     questions = QUESTION_BANK.sort(() => 0.5 - Math.random()).slice(0, TOTAL_QUESTIONS);
     const currentQuestionData = questions[currentQuestionNo - 1];
-    console.log(currentQuestionData.image)
+    console.log(currentQuestionData.image);
     document.getElementById("question").src = currentQuestionData.image;
     let task = document.getElementById('task');
 
@@ -192,209 +191,209 @@ function displayQuestion(difficulty) {
         let useranswer = document.getElementById('useranswer');
         useranswer.onkeyup = function () {
             checkAnswer('medium', useranswer);
-        }
+        };
     }
+}
 
-
-    /**
-     * Starts new round of the game
-     * checks if score allows continuing the game and
-     * calls for updateScores and displayQuestion */
-    function startNewRound(difficulty) {
-        updateScores();
-        if (lifesRemaining == 0) {
+/**
+ * Starts new round of the game
+ * checks if score allows continuing the game and
+ * calls for updateScores and displayQuestion */
+function startNewRound(difficulty) {
+    updateScores();
+    if (lifesRemaining == 0) {
+        gameOver();
+        setTimeout(displayQuestion(difficulty), 1500);
+    } else {
+        if (currentQuestionNo < 10) {
+            correctAnswer = '';
+            displayQuestion(difficulty);
+        } else {
             gameOver();
-            setTimeout(displayQuestion(difficulty), 1500);
+            setTimeout(displayQuestion(difficulty), 2000);
+        }
+    }
+}
+
+/**
+ * Checks if given answer is correct, updates scores accordingly
+ * starts new round
+ */
+function checkAnswer(difficulty, useranswer) {
+
+    if (difficulty == 'easy') {
+        if (useranswer.innerHTML == correctAnswer) {
+            useranswer.style.backgroundColor = 'green';
+            useranswer.style.color = 'white';
+            score++;
         } else {
-            if (currentQuestionNo < 10) {
-                correctAnswer = '';
-                displayQuestion(difficulty);
-            } else {
-                gameOver();
-                setTimeout(displayQuestion(difficulty), 2000);
-            }
+            useranswer.style.backgroundColor = 'red';
+            useranswer.style.color = 'white';
+            lifesRemaining -= 1;
+            setTimeout(showcorrectanswer, 100);
         }
-    }
+        setTimeout(continueEasyGame, 500);
 
-    /**
-     * Checks if given answer is correct, updates scores accordingly
-     * starts new round
-     */
-    function checkAnswer(difficulty, useranswer) {
-
-        if (difficulty == 'easy') {
-            if (useranswer.innerHTML == correctAnswer) {
-                useranswer.style.backgroundColor = 'green';
-                useranswer.style.color = 'white';
-                score++;
-            } else {
-                useranswer.style.backgroundColor = 'red';
-                useranswer.style.color = 'white';
-                lifesRemaining -= 1;
-                setTimeout(showcorrectanswer, 100);
-            }
-            setTimeout(continueEasyGame, 500);
-
-        } else if (difficulty == 'medium') {
-            if (useranswer.value == correctAnswer) {
-                score++;
-                document.getElementById("message").innerHTML = `Correct!`;
-                document.getElementById("result-modal").style.display = "block";
-                setTimeout(continueMediumGame, 1000);
-            } else if (correctAnswer.startsWith(useranswer.value)) {
-                useranswer.style.border = 'solid 10px green';
-            } else if (useranswer.value != "Type here") {
-                if (fail == 0) {
-                    lifesRemaining -= 1;
-                    fail += 1;
-                    updateLifesCount();
-                } else if (fail < 5) {
-                    fail += 1;
-                } else {
-                    useranswer.onkeyup = function () {};
-                    showcorrectanswer('medium');
-                    setTimeout(continueMediumGame, 1500);
-                }
-                useranswer.style.border = 'solid 10px red';
-            }
-        }
-    }
-
-    /**
-     * shows user the correct answer
-     */
-    function showcorrectanswer(difficulty) {
-        if (difficulty == 'medium') {
-            document.getElementById("message").innerHTML = `The correct sepelling is <span style="color:red; font-size:2rem">${correctAnswer.toUpperCase()}</span>`;
+    } else if (difficulty == 'medium') {
+        if (useranswer.value == correctAnswer) {
+            score++;
+            document.getElementById("message").innerHTML = `Correct!`;
             document.getElementById("result-modal").style.display = "block";
-        } else {
-            for (let answer of answers) {
-                if (answer.innerHTML == correctAnswer) {
-                    answer.style.backgroundColor = 'green';
-                    answer.style.color = 'white';
-                }
+            setTimeout(continueMediumGame, 1000);
+        } else if (correctAnswer.startsWith(useranswer.value)) {
+            useranswer.style.border = 'solid 10px green';
+        } else if (useranswer.value != "Type here") {
+            if (fail == 0) {
+                lifesRemaining -= 1;
+                fail += 1;
+                updateLifesCount();
+            } else if (fail < 5) {
+                fail += 1;
+            } else {
+                useranswer.onkeyup = function () {};
+                showcorrectanswer('medium');
+                setTimeout(continueMediumGame, 1500);
+            }
+            useranswer.style.border = 'solid 10px red';
+        }
+    }
+}
+
+/**
+ * shows user the correct answer
+ */
+function showcorrectanswer(difficulty) {
+    if (difficulty == 'medium') {
+        document.getElementById("message").innerHTML = `The correct sepelling is <span style="color:red; font-size:2rem">${correctAnswer.toUpperCase()}</span>`;
+        document.getElementById("result-modal").style.display = "block";
+    } else {
+        for (let answer of answers) {
+            if (answer.innerHTML == correctAnswer) {
+                answer.style.backgroundColor = 'green';
+                answer.style.color = 'white';
             }
         }
     }
+}
 
-    /**
-     * closes the result modal and calls new round 
-     * setting the difficulty to easy
-     */
-    function continueEasyGame() {
-        document.getElementById("result-modal").style.display = "none";
-        startNewRound('easy');
-    }
-    /**
-     * closes the result modal and calls new round 
-     * setting the difficulty to medium
-     */
-    function continueMediumGame() {
-        document.getElementById("result-modal").style.display = "none";
-        fail = 0;
-        startNewRound('medium');
-    }
+/**
+ * closes the result modal and calls new round 
+ * setting the difficulty to easy
+ */
+function continueEasyGame() {
+    document.getElementById("result-modal").style.display = "none";
+    startNewRound('easy');
+}
+/**
+ * closes the result modal and calls new round 
+ * setting the difficulty to medium
+ */
+function continueMediumGame() {
+    document.getElementById("result-modal").style.display = "none";
+    fail = 0;
+    startNewRound('medium');
+}
 
-    /**
-     * reset input field
-     */
-    function resetInputField() {
-        document.getElementById('useranswer').value = '';
-        document.getElementById('useranswer').focus();
-        document.getElementById('useranswer').style.border = 'solid 10px  white';
-    }
+/**
+ * reset input field
+ */
+function resetInputField() {
+    document.getElementById('useranswer').value = '';
+    document.getElementById('useranswer').focus();
+    document.getElementById('useranswer').style.border = 'solid 10px  white';
+}
 
-    /**
-     * Returns random letter
-     */
-    function getRandomAlphabet() {
-        let letters = [
-            'Q',
-            'W',
-            'E',
-            'R',
-            'T',
-            'Y',
-            'U',
-            'I',
-            'O',
-            'P',
-            'A',
-            'S',
-            'D',
-            'F',
-            'G',
-            'H',
-            'J',
-            'K',
-            'L',
-            'Z',
-            'X',
-            'C',
-            'V',
-            'B',
-            'N',
-            'M',
-        ];
-        return letters[Math.floor(Math.random() * 26)];
-    }
+/**
+ * Returns random letter
+ */
+function getRandomAlphabet() {
+    let letters = [
+        'Q',
+        'W',
+        'E',
+        'R',
+        'T',
+        'Y',
+        'U',
+        'I',
+        'O',
+        'P',
+        'A',
+        'S',
+        'D',
+        'F',
+        'G',
+        'H',
+        'J',
+        'K',
+        'L',
+        'Z',
+        'X',
+        'C',
+        'V',
+        'B',
+        'N',
+        'M',
+    ];
+    return letters[Math.floor(Math.random() * 26)];
+}
 
 
-    /**
-     * Displays game over modal with score information
-     * and calls for resetting score 
-     */
-    function gameOver() {
-        document.getElementById("message").innerHTML = `Game over. Your score: <span style="color:red; font-size:2rem">${score}</span>. <br> Try again!`;
-        document.getElementById("result-modal").style.display = "block";
-        resetScores();
-    }
-    /**
-     * Resets the scores
-     * to use before new game
-     */
-    function resetScores() {
-        score = 0;
-        currentQuestionNo = 0;
-        lifesRemaining = TOTAL_LIFES;
-    }
+/**
+ * Displays game over modal with score information
+ * and calls for resetting score 
+ */
+function gameOver() {
+    document.getElementById("message").innerHTML = `Game over. Your score: <span style="color:red; font-size:2rem">${score}</span>. <br> Try again!`;
+    document.getElementById("result-modal").style.display = "block";
+    resetScores();
+}
+/**
+ * Resets the scores
+ * to use before new game
+ */
+function resetScores() {
+    score = 0;
+    currentQuestionNo = 0;
+    lifesRemaining = TOTAL_LIFES;
+}
 
-    /**
-     * increments the currentQuestionNo 
-     * and call for updating score information displayed
-     */
-    function updateScores() {
-        currentQuestionNo++;
-        updateQuestionCount();
-        updateLifesCount();
-    }
+/**
+ * increments the currentQuestionNo 
+ * and call for updating score information displayed
+ */
+function updateScores() {
+    currentQuestionNo++;
+    updateQuestionCount();
+    updateLifesCount();
+}
 
-    /**
-     * update the current question number displayed
-     */
-    function updateQuestionCount() {
-        let questionCount = document.getElementsByClassName('qcount');
-        let questionLabel = document.getElementById('qcount');
-        for (let i = 0; i < 10; i++) {
-            questionCount[i].style.backgroundColor = 'white';
-        }
-        for (let i = 0; i < currentQuestionNo; i++) {
-            questionCount[i].style.backgroundColor = 'green';
-        }
-        questionLabel.innerHTML = `Question: ${currentQuestionNo} / 10`;
+/**
+ * update the current question number displayed
+ */
+function updateQuestionCount() {
+    let questionCount = document.getElementsByClassName('qcount');
+    let questionLabel = document.getElementById('qcount');
+    for (let i = 0; i < 10; i++) {
+        questionCount[i].style.backgroundColor = 'white';
     }
+    for (let i = 0; i < currentQuestionNo; i++) {
+        questionCount[i].style.backgroundColor = 'green';
+    }
+    questionLabel.innerHTML = `Question: ${currentQuestionNo} / 10`;
+}
 
-    /**
-     * update the remaining lifes displayed
-     */
-    function updateLifesCount() {
-        let lifesCount = document.getElementsByClassName('lcount');
-        let lifesLabel = document.getElementById('lcount');
-        for (let i = 0; i < 3; i++) {
-            lifesCount[i].style.backgroundColor = 'white';
-        }
-        for (let i = 0; i < lifesRemaining; i++) {
-            lifesCount[i].style.backgroundColor = 'red';
-        }
-        lifesLabel.innerHTML = `Lifes left: ${lifesRemaining}/ 3`;
+/**
+ * update the remaining lifes displayed
+ */
+function updateLifesCount() {
+    let lifesCount = document.getElementsByClassName('lcount');
+    let lifesLabel = document.getElementById('lcount');
+    for (let i = 0; i < 3; i++) {
+        lifesCount[i].style.backgroundColor = 'white';
     }
+    for (let i = 0; i < lifesRemaining; i++) {
+        lifesCount[i].style.backgroundColor = 'red';
+    }
+    lifesLabel.innerHTML = `Lifes left: ${lifesRemaining}/ 3`;
+}
