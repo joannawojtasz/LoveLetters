@@ -18,8 +18,6 @@ document.getElementById("start").onclick = function () {
     document.getElementById("form-modal").style.display = "block";
 };
 
-
-
 document.getElementById('reset').onclick = function () {
     document.getElementById("initial-modal").style.display = "none";
     resetScores(); //temp
@@ -73,6 +71,30 @@ const QUESTION_BANK = [{
         image: 'assets/images/shark.png',
         name: 'shark',
     },
+    {
+        image: 'assets/images/lemon.png',
+        name: 'lemon',
+    },
+    {
+        image: 'assets/images/pear.png',
+        name: 'pear',
+    },
+    {
+        image: 'assets/images/pencil.png',
+        name: 'pencil',
+    },
+    {
+        image: 'assets/images/orange.png',
+        name: 'orange',
+    },
+    {
+        image: 'assets/images/car.png',
+        name: 'car',
+    },
+    {
+        image: 'assets/images/apple.png',
+        name: 'apple',
+    }
 ];
 const TOTAL_LIFES = 3;
 const TOTAL_QUESTIONS = 10;
