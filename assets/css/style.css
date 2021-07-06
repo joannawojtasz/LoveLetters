@@ -120,13 +120,13 @@ h2 {
     height: 300px;
 }
 
-#answer-div {
+#answer-div-easy {
     margin: 0 auto;
     display: flex;
     justify-content: space-around;
 }
 
-#answer-div div {
+#answer-div-easy div {
     width: 300px;
     background-color: white;
     font-size: 4rem;
@@ -368,7 +368,7 @@ form {
         width: 15px;
     }
 
-    #answer-div div {
+    #answer-div-easy div {
         font-size: 3rem;
     }
 
@@ -404,7 +404,7 @@ form {
         display: none;
     }
 
-    #answer-div div {
+    #answer-div-easy div {
         width: 30%;
         margin: 0 0;
         font-size: 2rem;
