@@ -244,7 +244,7 @@ function checkAnswer(difficulty, useranswer) {
             useranswer.style.color = 'white';
             score++;
         } else {
-            useranswer.style.backgroundColor = 'red';
+            useranswer.style.backgroundColor = '#c20000';
             useranswer.style.color = 'white';
             lifesRemaining -= 1;
             setTimeout(showcorrectanswer, 100);
@@ -371,7 +371,7 @@ function gameOver() {
  */
 function resetScores() {
     score = 0;
-    currentQuestionNo = 0;
+    currentQuestionNo = 1;
     lifesRemaining = TOTAL_LIFES;
 }
 
