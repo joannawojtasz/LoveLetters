@@ -29,7 +29,7 @@ header {
 }
 
 .index-header h1 {
-font-size: 5rem;
+    font-size: 5rem;
 }
 
 .index-header h2 {
@@ -44,17 +44,20 @@ font-size: 5rem;
     margin: 0 auto;
     padding-bottom: 10px;
 }
+
 #panel {
     background-color: #bfa7a1;
     color: white;
 }
+
 #welcome {
     width: 100%;
     font-size: 2rem;
     font-weight: 900;
     text-align: left;
-    padding: 25px; 
+    padding: 25px;
 }
+
 #description {
     width: 45%;
     margin: 0 auto;
@@ -63,53 +66,58 @@ font-size: 5rem;
     top: -20px;
     background-color: #F5F5F6;
 }
+
 ul {
     padding: 20px;
 }
 
-#opengame {
-    width: 200px;
-    height: 100%;
-    margin: 0 auto 0;
-    background: #c20000;;
-  }
-  
-  .pulse-button {
-    margin: 0 auto;
+.pulse-button {
     display: block;
+    background-color: #c20000;
     width: 300px;
     height: 100px;
     font-size: 1.5em;
-    font-weight: light;
     text-transform: uppercase;
-    font-family:  sans-serif;
     text-align: center;
     line-height: 100px;
-    letter-spacing: 3px;
-    color: white;
     border: none;
     border-radius: 4%;
-    background: #c20000;
     border-style: outset;
-    -webkit-animation: pulse 1s infinite;
-  }
-  .pulse-button:hover {
-    -webkit-animation: none;
-  }
-  
-  @-webkit-keyframes pulse {
+    margin: 0 auto;
+    animation: pulse 2s infinite;
+}
+
+.pulse-button:hover {
+    animation: none;
+}
+
+@keyframes pulse {
     0% {
-      @include transform(scale(.98));
+        transform: scale(.99);
     }
-    
+
+    25% {
+        transform: scale(.98);
+    }
+
     50% {
-      @include transform(scale(1));
-    
+        @transform: scale(0.99);
     }
-      100% {
-      @include transform(scale(.98));
+
+    75% {
+        transform: scale(.98);
     }
-  }
+
+    100% {
+        @transform: scale(.98);
+    }
+}
+
+#opengame {
+    text-decoration: none;
+    letter-spacing: 3px;
+    color: #fff;
+}
 
 /* --------- Navigation */
 #navigation {
