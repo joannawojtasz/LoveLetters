@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -16,7 +16,7 @@
 
 <body>
 
-    <header>
+    <header class="index-header">
         <h1>
             <img class="logo" src="assets/images/logo.png" alt="logo">
             Love letters
@@ -24,131 +24,74 @@
         <h2>Learn to spell</h2>
     </header>
 
-    <div id="game-field">
-        <div id="scores">
-            <div id="question-count">
-                <div class="circle-conrainer">
-                    <div class="qcount circle green"></div>
-                    <div class="qcount circle"></div>
-                    <div class="qcount circle"></div>
-                    <div class="qcount circle"></div>
-                    <div class="qcount circle"></div>
-                    <div class="qcount circle"></div>
-                    <div class="qcount circle"></div>
-                    <div class="qcount circle"></div>
-                    <div class="qcount circle"></div>
-                    <div class="qcount circle"></div>
-                </div>
-                <p id="qcount">Question: 1 / 10</p>
-            </div>
-            <div id="username">
-                <h3 id="username">NAME</h3>
-            </div>
-            <div id="lifes-left">
-                <div class="circle-conrainer">
-                    <div class="lcount circle red"></div>
-                    <div class="lcount circle red"></div>
-                    <div class="lcount circle red"></div>
-                </div>
-                <p id="lcount">Lifes left: 3 / 3</p>
-            </div>
+    <div id="main-field">
+        <div id="panel">
+                <h3 id="welcome">Welcome to Love letters!</h3>
         </div>
-        <div id="task">
-            Name the item on the picture. <br> What letter does the name start with?
+        <div id="description">
+            <p>Love letters is an interactive game for kids who want to learn to recognize letters and to spell. Game offers two levels of
+                difficulty:</p>
+            <ul>
+                <li>recognize first letters (4-6 years)</li>
+                <li>spelling bee(older kids)</li>
+            </ul>
         </div>
-        <div id="question-div">
-            <img src="assets/images/question.png" alt="question" id="question">
+        <div id="opengame">
+            <a href="game.html" id="opengame">Play</a>
         </div>
-        <div id="answer-div-easy">
-            <div class="answer">A</div>
-            <div class="answer">B</div>
-            <div class="answer">Q</div>
-        </div>
-        <div id="answer-div-medium">
-            <input type="text" name="useranswer" id="useranswer" placeholder="Type here">
-        </div>
+
     </div>
+
+
     <div>
         <div id="navigation">
-            <a href="index.html" id="back">Take me back</a>
-            <a href="#index" id="reset">Reset game</a>
+            <a href="#index.html" id="rules">Rules</a>
+            <a href="#index.html" id="about">About</a>
         </div>
     </div>
 
-    <!-- The Modal prepared according to W3schools.com example -->
-    <div id="initial-modal" class="modal">
+    <div id="rules-modal" class="modal information">
 
         <div class="modal-content">
-            <span class="close">&times;</span>
-            <button id="start" type="button">
-                <h2>Click here to play</h2>
-            </button>
+            <span class="close">×</span>
+            <h3>Love letters rules</h3>
+            <ul>
+                <li>
+                    Player needs to name object on the picture. Depending on a level the goal is too choose correctly first letter of items name or spell the name correctly.
+                </li>
+                <li>
+                    One game consists of 10 questions.
+                </li>
+                <li>
+                    Player start with 3 lifes, a wrong choice of letter causes life loss.
+                </li>
+                <li>
+                    Loosing a life or answering all questions ends the game.
+                </li>
+                <li>
+                    On advanced level player has 5 tries to corect the spelling after you lost a life. 
+                </li>
+            </ul>
         </div>
 
+        
     </div>
 
-<!-- Modal created  -->  
-    <div id="form-modal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <form>
-                <div class="form-div">
-                    <label for="name">Players name:</label>
-                    <input type="name" name="name" id="name" placeholder="Name" pattern="[a-zA-Z]{0,40}" required>
-                </div>
-                <div class="form-div">
-                    <p>Age:</p>
-
-                    <div class="age" id="easy-div">
-                        <input type="radio" id="easy" name="age" value="easy" class="age-input" required>
-                        <label for="easy"> &lt; 6</label>
-                    </div>
-
-                    <div class="age" id="medium-div">
-                        <input type="radio" id="medium" name="age" value="medium" class="age-input">
-                        <label for="medium"> 6 &gt;</label>
-                    </div>
-                </div>
-                <div class="form-div">
-                    <p>Favourite color</p>
-                    <label class="container">
-                        <input type="radio" name="color" value="green" class="colors" required>
-                        <span class="checkmark" id="green"></span>
-                    </label>
-                    <label class="container">
-                        <input type="radio" name="color" value="blue" class="colors">
-                        <span class="checkmark" id="blue"></span>
-                    </label>
-                    <label class="container">
-                        <input type="radio" name="color" value="red" class="colors">
-                        <span class="checkmark" id="red"></span>
-                    </label>
-                    <label class="container">
-                        <input type="radio" name="color" value="yellow" class="colors">
-                        <span class="checkmark" id="yellow"></span>
-                    </label>
-                </div>
-
-                <button id="play" type="submit" value="submit">
-                    <h2>Play</h2>
-                </button>
-            </form>
-        </div>
-
-
-    </div>
-
-    <div id="result-modal" class="modal">
+    <div id="about-modal" class="modal information">
 
         <div class="modal-content">
-            <span class="close">&times;</span>
-            <p id="message"></p>
+            <span class="close">×</span>
+            <h3>Love letters </h3>
+            <p>Version: 1.0.1
+                Author: Joanna Wojtasz-Mucha
+            </p>
         </div>
-
     </div>
+    <script src="assets/js/index.js"></script>
 
-    <script src="assets/js/script.js"></script>
+</body>
 
+</html>
 </body>
 
 </html>

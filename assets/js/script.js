@@ -1,23 +1,21 @@
 /* on load display initial modal
 with possibility to close the window or enter the game*/
 window.onload = function () {
-    document.getElementById("initial-modal").style.display = "block";
-};
-document.getElementsByClassName("close")[0].onclick = function () {
-    document.getElementById("initial-modal").style.display = "none";
-};
-document.getElementsByClassName("close")[1].onclick = function () {
-    document.getElementById("form-modal").style.display = "none";
-};
-document.getElementsByClassName("close")[2].onclick = function () {
-    document.getElementById("result-modal").style.display = "none";
-};
-
-document.getElementById("start").onclick = function () {
-    document.getElementById("initial-modal").style.display = "none";
     document.getElementById("form-modal").style.display = "block";
 };
 
+document.getElementsByClassName("close")[0].onclick = function () {
+    document.getElementById("form-modal").style.display = "none";
+};
+document.getElementsByClassName("close")[1].onclick = function () {
+    document.getElementById("result-modal").style.display = "none";
+};
+document.getElementsByClassName("close")[2].onclick = function () {
+    document.getElementById("correct-modal").style.display = "none";
+};
+document.getElementById("restart").onclick = function () {
+    document.getElementById("result-modal").style.display = "none";
+};
 document.getElementById('reset').onclick = function () {
     resetScores(); 
     // document.getElementById("form-modal").style.display = "block";
@@ -71,11 +69,11 @@ const QUESTION_BANK = [{
         name: 'shark',
     },
     {
-        image: 'assets/images/lemon.png',
+        image: 'assets/images/lemon.jpg',
         name: 'lemon',
     },
     {
-        image: 'assets/images/pear.png',
+        image: 'assets/images/pear.jpg',
         name: 'pear',
     },
     {
@@ -91,7 +89,7 @@ const QUESTION_BANK = [{
         name: 'car',
     },
     {
-        image: 'assets/images/apple.png',
+        image: 'assets/images/apple.jpg',
         name: 'apple',
     }
 ];
@@ -256,8 +254,8 @@ function checkAnswer(difficulty, useranswer) {
     } else if (difficulty == 'medium') {
         if (useranswer.value == correctAnswer) {
             score++;
-            document.getElementById("message").innerHTML = `Correct!`;
-            document.getElementById("result-modal").style.display = "block";
+            document.getElementById("message-correct").innerHTML = `Correct!`;
+            document.getElementById("correct-modal").style.display = "block";
             setTimeout(continueMediumGame, 1000);
         } else if (correctAnswer.startsWith(useranswer.value)) {
             useranswer.style.border = 'solid 10px green';
@@ -283,8 +281,8 @@ function checkAnswer(difficulty, useranswer) {
  */
 function showcorrectanswer(difficulty) {
     if (difficulty == 'medium') {
-        document.getElementById("message").innerHTML = `The correct sepelling is <span style="color:red; font-size:2rem">${correctAnswer.toUpperCase()}</span>`;
-        document.getElementById("result-modal").style.display = "block";
+        document.getElementById("message-correct").innerHTML = `The correct sepelling is <span style="color:red; font-size:2rem">${correctAnswer.toUpperCase()}</span>`;
+        document.getElementById("correct-modal").style.display = "block";
     } else {
         for (let answer of answers) {
             if (answer.innerHTML == correctAnswer) {
@@ -300,7 +298,7 @@ function showcorrectanswer(difficulty) {
  * setting the difficulty to easy
  */
 function continueEasyGame() {
-    document.getElementById("result-modal").style.display = "none";
+    document.getElementById("correct-modal").style.display = "none";
     startNewRound('easy');
 }
 /**
@@ -308,7 +306,7 @@ function continueEasyGame() {
  * setting the difficulty to medium
  */
 function continueMediumGame() {
-    document.getElementById("result-modal").style.display = "none";
+    document.getElementById("correct-modal").style.display = "none";
     fail = 0;
     startNewRound('medium');
 }
