@@ -160,7 +160,7 @@ function displayQuestion(difficulty) {
 
     if (difficulty == 'easy') {
         task.innerHTML = 'Name the item on the picture. <br> What letter does the name start with?';
-        document.getElementByid('answer-div').style.display = 'block';
+        document.getElementById('answer-div').style.display = 'flex;';
         document.getElementById('answer-div-medium').style.display = 'none';
         correctAnswer = currentQuestionData.name.charAt(0).toUpperCase();
         //get 3 random letters in answer boxes
@@ -179,7 +179,7 @@ function displayQuestion(difficulty) {
 
     } else if (difficulty == "medium") {
         task.innerHTML = 'Name the item on the picture.';
-        document.getElementByid('answer-div').style.display = 'none';
+        document.getElementById('answer-div').style.display = 'none';
         document.getElementById('answer-div-medium').style.display = 'block';
         correctAnswer = currentQuestionData.name;
         resetInputField();
