@@ -373,8 +373,9 @@ function gameOver(difficulty) {
 function resetScores() {
     document.getElementById("result-modal").style.display = "none";
     score = 0;
-    currentQuestionNo = 1;
+    currentQuestionNo = 0;
     lifesRemaining = TOTAL_LIFES;
+    updateScores()
 }
 
 /**
