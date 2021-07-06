@@ -2,24 +2,24 @@
 with possibility to close the window or enter the game*/
 window.onload = function () {
     document.getElementById("initial-modal").style.display = "block";
-}
+};
 document.getElementsByClassName("close")[0].onclick = function () {
     document.getElementById("initial-modal").style.display = "none";
-}
+};
 document.getElementById("start").onclick = function () {
     document.getElementById("initial-modal").style.display = "none";
     document.getElementById("form-modal").style.display = "block";
-}
+};
 
 document.getElementsByClassName("close")[1].onclick = function () {
     document.getElementById("form-modal").style.display = "none";
-}
+};
 
 document.getElementById('reset').onclick = function () {
     document.getElementById("initial-modal").style.display = "none";
-    resetScores() //temp
+    resetScores(); //temp
     document.getElementById("form-modal").style.display = "block";
-}
+};
 
 document.getElementsByTagName('form')[0].addEventListener("submit", play);
 /////////////////////////////////////////////////////////////////////////////////////////////////
@@ -68,7 +68,7 @@ const QUESTION_BANK = [{
         image: 'assets/images/shark.png',
         name: 'shark',
     },
-]
+];
 const TOTAL_LIFES = 3;
 const TOTAL_QUESTIONS = 10;
 
@@ -122,22 +122,26 @@ let fail = 0;
 
 /**
  * Starts the game by setting listeners for users answers
- * according to chosen level and starting displayGame function
+ * according to chosen level and starting displayQuestion function
  */
 function startGame(difficulty) {
 
     if (difficulty == 'easy') {
-        for (let answer of answers) {
-            answer.addEventListener('click', function () {
-                checkAnswer('easy', this);
-            });
-        }
-        displayGame(difficulty);
+        answers[0].addEventListener('click', function () {
+            checkAnswer('easy', this);
+        });
+        answers[1].addEventListener('click', function () {
+            checkAnswer('easy', this);
+        });
+        answers[2].addEventListener('click', function () {
+            checkAnswer('easy', this);
+        });
+        displayQuestion(difficulty);
     } else if (difficulty == 'medium') {
-        displayGame(difficulty);
-        givenAnswer = document.getElementById('useranswer');
-        givenAnswer.onkeyup = function () {
-            checkAnswer('medium', givenAnswer)
+        displayQuestion(difficulty);
+        let useranswer = document.getElementById('useranswer');
+        useranswer.onkeyup = function () {
+            checkAnswer('medium', useranswer);
         };
     }
 }
@@ -148,8 +152,8 @@ function startGame(difficulty) {
  * according to chosen level
  */
 function displayQuestion(difficulty) {
-    questions = QUESTION_BANK.sort(() => 0.5 - Math.random()).slice(0, TOTAL_QUESTIONS);
     let questions = [];
+    questions = QUESTION_BANK.sort(() => 0.5 - Math.random()).slice(0, TOTAL_QUESTIONS);
     const currentQuestionData = questions[currentQuestionNo - 1];
     document.getElementById("question").src = currentQuestionData.image;
     let task = document.getElementById('task');
@@ -160,7 +164,7 @@ function displayQuestion(difficulty) {
         document.getElementById('answer-div-medium').style.display = 'none';
         correctAnswer = currentQuestionData.name.charAt(0).toUpperCase();
         //get 3 random letters in answer boxes
-        for (answer of answers) {
+        for (let answer of answers) {
             answer.style.backgroundColor = 'white';
             answer.style.color = 'black';
             let letter = getRandomAlphabet();
@@ -178,7 +182,7 @@ function displayQuestion(difficulty) {
         document.getElementByid('answer-div').style.display = 'none';
         document.getElementById('answer-div-medium').style.display = 'block';
         correctAnswer = currentQuestionData.name;
-        resetInputField()
+        resetInputField();
     }
 }
 
@@ -188,16 +192,16 @@ function displayQuestion(difficulty) {
  * checks if score allows continuing the game and
  * calls for updateScores and displayQuestion */
 function startNewRound(difficulty) {
-    updateScores()
+    updateScores();
     if (lifesRemaining == 0) {
-        gameOver()
+        gameOver();
         setTimeout(displayQuestion(difficulty), 1500);
     } else {
         if (currentQuestionNo < 10) {
             correctAnswer = '';
             displayQuestion('difficulty');
         } else {
-        gameOver()
+        gameOver();
         setTimeout(displayQuestion(difficulty), 3000);
         }
     }
@@ -218,19 +222,19 @@ function checkAnswer(difficulty, useranswer) {
             useranswer.style.backgroundColor = 'red';
             useranswer.style.color = 'white';
             lifesRemaining -= 1;
-            setTimeout(showcorrectanswer, 100)
+            setTimeout(showcorrectanswer, 100);
         }
         setTimeout(continueEasyGame, 500);
 
     } else if (difficulty == 'medium') {
-        if (givenAnswer.value == correctAnswer) {
+        if (useranswer.value == correctAnswer) {
             score++;
             document.getElementById("message").innerHTML = `Correct!`;
             document.getElementById("result-modal").style.display = "block";
             setTimeout(continueMediumGame, 1000);
-        } else if (correctAnswer.startsWith(givenAnswer.value)) {
-                givenAnswer.style.border = 'solid 10px green';
-        } else if (givenAnswer.value != "Type here"){
+        } else if (correctAnswer.startsWith(useranswer.value)) {
+            useranswer.style.border = 'solid 10px green';
+        } else if (useranswer.value != "Type here"){
                 if (fail == 0) {
                     lifesRemaining -= 1;
                     fail += 1;
@@ -238,31 +242,30 @@ function checkAnswer(difficulty, useranswer) {
                 } else if (fail < 5) {
                     fail += 1;
                 } else {
-                    showcorrectanswer('medium')
+                    showcorrectanswer('medium');
                     setTimeout(continueMediumGame, 1500);
                 }
-                givenAnswer.style.border = 'solid 10px red';
+                useranswer.style.border = 'solid 10px red';
             }
         }
     }
-}
 
 /**
  * shows user the correct answer
  */
  function showcorrectanswer(difficulty) {
-    if (difficulty = 'medium') {
+    if (difficulty == 'medium') {
         document.getElementById("message").innerHTML = `The correct sepelling is <span style="color:red; font-size:2rem">${correctAnswer.toUpperCase()}</span>`;
                     document.getElementById("result-modal").style.display = "block";
-                    givenAnswer.onkeyup = function () {};
+                    // useranswer.onkeyup = function () {};
     } else  {
-    for (answer of answers) {
+    for (let answer of answers) {
         if (answer.innerHTML == correctAnswer) {
             answer.style.backgroundColor = 'green';
             answer.style.color = 'white';
         } 
      } 
-    } else
+    }
 }
 
 /**
@@ -271,7 +274,7 @@ function checkAnswer(difficulty, useranswer) {
  */
 function continueEasyGame() {
     document.getElementById("result-modal").style.display = "none";
-    startNewRound('easy')
+    startNewRound('easy');
     
 }
 /**
@@ -281,8 +284,7 @@ function continueEasyGame() {
 function continueMediumGame() {
     document.getElementById("result-modal").style.display = "none";
     fail = 0;
-    startNewRound('medium')
-    
+    startNewRound('medium');    
 }
 
 /**
@@ -337,7 +339,7 @@ function resetInputField() {
  function gameOver() {
     document.getElementById("message").innerHTML = `Game over. Your score: <span style="color:red; font-size:2rem">${score}</span>. <br> Try again!`;
     document.getElementById("result-modal").style.display = "block";
-    resetScores()
+    resetScores();
 }
 /**
  * Resets the scores
@@ -354,9 +356,9 @@ function resetScores() {
  * and call for updating score information displayed
  */
 function updateScores() {
-    currentQuestionNo++
-    updateQuestionCount()
-    updateLifesCount()
+    currentQuestionNo++;
+    updateQuestionCount();
+    updateLifesCount();
 }
 
 /**
