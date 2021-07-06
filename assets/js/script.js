@@ -240,7 +240,7 @@ function checkAnswer(difficulty, useranswer) {
 
     if (difficulty == 'easy') {
         if (useranswer.innerHTML == correctAnswer) {
-            useranswer.style.backgroundColor = 'green';
+            useranswer.style.backgroundColor = '#009700';
             useranswer.style.color = 'white';
             score++;
         } else {
@@ -258,7 +258,7 @@ function checkAnswer(difficulty, useranswer) {
             document.getElementById("correct-modal").style.display = "block";
             setTimeout(continueMediumGame, 1000);
         } else if (correctAnswer.startsWith(useranswer.value)) {
-            useranswer.style.border = 'solid 10px green';
+            useranswer.style.border = 'solid 10px #009700';
         } else if (useranswer.value != "Type here") {
             if (fail == 0) {
                 lifesRemaining -= 1;
@@ -271,7 +271,7 @@ function checkAnswer(difficulty, useranswer) {
                 showcorrectanswer('medium');
                 setTimeout(continueMediumGame, 1500);
             }
-            useranswer.style.border = 'solid 10px red';
+            useranswer.style.border = 'solid 10px #c20000';
         }
     }
 }
@@ -281,12 +281,12 @@ function checkAnswer(difficulty, useranswer) {
  */
 function showcorrectanswer(difficulty) {
     if (difficulty == 'medium') {
-        document.getElementById("message-correct").innerHTML = `The correct sepelling is <span style="color:red; font-size:2rem">${correctAnswer.toUpperCase()}</span>`;
+        document.getElementById("message-correct").innerHTML = `The correct sepelling is <span style="color:#c20000; font-size:2rem">${correctAnswer.toUpperCase()}</span>`;
         document.getElementById("correct-modal").style.display = "block";
     } else {
         for (let answer of answers) {
             if (answer.innerHTML == correctAnswer) {
-                answer.style.backgroundColor = 'green';
+                answer.style.backgroundColor = '#009700';
                 answer.style.color = 'white';
             }
         }
@@ -361,7 +361,7 @@ function getRandomAlphabet() {
  * and calls for resetting score 
  */
 function gameOver() {
-    document.getElementById("message").innerHTML = `Game over. Your score: <span style="color:red; font-size:2rem">${score}</span>. <br> Try again!`;
+    document.getElementById("message").innerHTML = `Game over. Your score: <span style="color:#c20000; font-size:2rem">${score}</span>. <br> Try again!`;
     document.getElementById("result-modal").style.display = "block";
     resetScores();
 }
@@ -395,7 +395,7 @@ function updateQuestionCount() {
         questionCount[i].style.backgroundColor = 'white';
     }
     for (let i = 0; i < currentQuestionNo; i++) {
-        questionCount[i].style.backgroundColor = 'green';
+        questionCount[i].style.backgroundColor = '#009700';
     }
     questionLabel.innerHTML = `Question: ${currentQuestionNo} / 10`;
 }
@@ -410,7 +410,7 @@ function updateLifesCount() {
         lifesCount[i].style.backgroundColor = 'white';
     }
     for (let i = 0; i < lifesRemaining; i++) {
-        lifesCount[i].style.backgroundColor = 'red';
+        lifesCount[i].style.backgroundColor = '#c20000';
     }
     lifesLabel.innerHTML = `Lifes left: ${lifesRemaining}/ 3`;
 }
