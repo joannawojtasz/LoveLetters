@@ -8,7 +8,7 @@ document.getElementsByClassName("close")[0].onclick = function() {
 document.getElementsByClassName("close")[1].onclick = function() {
 	document.getElementById("rules-modal").style.display = "none";
 };
-document.getElementsByClassName("close")[0].onclick = function() {
+document.getElementsByClassName("close")[2].onclick = function() {
 	document.getElementById("about-modal").style.display = "none";
 };
 document.getElementById("rules").onclick = function() {

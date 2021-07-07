@@ -97,9 +97,10 @@ ul {
 }
 /* --------- Navigation */
 #navigation {
+    max-width: 1000px;
     display: flex;
-    justify-content: space-around;
-    margin: 10px;
+    justify-content: space-between;
+    margin: 10px auto;
 }
 a {
     color: #000;
@@ -118,7 +119,7 @@ a {
 #game-field {
     background-color: #E1E2E1;
     max-width: 1000px;
-    margin: 0 auto 100px auto;
+    margin: 0 auto 30px auto;
     padding-bottom: 10px;
 }
 #task {
@@ -421,7 +422,7 @@ form {
         font-size: 1rem;
    }
     #main-field {
-        max-width: 85%;
+        max-width: 600px;
         height: 400px;
    }
     #description {
@@ -483,13 +484,13 @@ form {
    }
     form {
         width: 250px;
-        padding: 42px 0;
+        padding: 25px 0 0;
         margin: 0 auto;
    }
     #form-modal .modal-content {
-        top: 15%;
-        left: 6%;
-        padding: 15px;
+        top: 5%;
+        left: 7%;
+        padding: 10px;
         margin: 0;
         width: 80%;
    }
@@ -502,8 +503,8 @@ form {
     #play, #restart {
         padding: 25px 50px;
         width: 175px;
-   }
-    #play h2, #restart h2{
+        margin: 5px auto;
+
         letter-spacing: 1px;
         font-size: 1rem;
    }
