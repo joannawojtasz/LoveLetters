@@ -1,4 +1,4 @@
-# Love letters
+# Love letters 1.1.0
 
 A simple webbased application targeted at small kids aiming at practicing spelling. To start the application a parent/care taker needs to enter initial information about the user such as name and age. The age is used to choose one of the two levels of difficulty in the game.
 
@@ -44,7 +44,8 @@ Love letters game is based on a simple spelling challenge. The game displays pic
 
 * Index page was added for clarity. 
 * Rules and About were introduced
-* 
+* Initial form was moved to front page
+* The rules were udjusted (3 attempts at medium level)
 
 ### Features
 
