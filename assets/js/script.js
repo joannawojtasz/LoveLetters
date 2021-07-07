@@ -1,13 +1,17 @@
 /* on load take values from url and start game*/
 window.onload = function () {
     startNewGame()
-    let closeButtons = document.getElementsByClassName("close");
-    for (closeButton of closeButtons) {
-        closeButton.onclick = function () {
-            closeButton.parentNode.style.display = "none";
-        };
-    };
 }
+
+document.getElementsByClassName("close")[0].onclick = function () {
+    document.getElementById("form-modal").style.display = "none";
+};
+document.getElementsByClassName("close")[1].onclick = function () {
+    document.getElementById("result-modal").style.display = "none";
+};
+document.getElementsByClassName("close")[0].onclick = function () {
+    document.getElementById("correct-modal").style.display = "none";
+};
 
 document.getElementById("restart").onclick = function () {
     document.getElementById("result-modal").style.display = "none";
@@ -276,7 +280,7 @@ function checkAnswer(difficulty, userInputNode) {
                 updateLifesCount();
                 userInputNode.disabled = true;
                 showCorrectAnswer();
-                showNextQuestionInit(difficulty, 1500);
+                showNextQuestionInit(difficulty, 2000);
             }
             userInputNode.style.border = 'solid 10px #c20000';
         }
