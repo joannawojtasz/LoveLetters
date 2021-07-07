@@ -155,6 +155,7 @@ function startGame(difficulty) {
 function answerButtonClickListener() {
   checkAnswer('easy', this);
 }
+
 /**
  * Displays the task, random question and answer boxes
  * according to chosen level
@@ -164,6 +165,7 @@ function displayQuestion(difficulty) {
   document.getElementById("question").src = currentQuestionData.image;
   let task = document.getElementById('task') ;
   correctAnswer = currentQuestionData.name.toUpperCase();
+  console.log(correctAnswer)
   if (difficulty == 'easy') {
     task.innerHTML = 'Name the item on the picture. <br> What letter does the name start with?';
     document.getElementById('answer-div-easy').style.display = 'flex;';
@@ -200,6 +202,7 @@ function displayQuestion(difficulty) {
 function startNewRound(difficulty) {
     currentQuestionNo++
     console.log(currentQuestionNo);
+    document.getElementById("correct-modal").style.display = "none";
     if (lifesRemaining == 0) {
         gameOver(difficulty);
         setTimeout(resetScores, 2000);
@@ -233,21 +236,19 @@ function checkAnswer(difficulty, userInputNode) {
       }
       showNextQuestionInit(difficulty, 500);
   } else if (difficulty == 'medium') {
-      if (userInputNode.value == correctAnswer) {
+      if (userInputNode.value.toUpperCase() == correctAnswer) {
           score++;
           document.getElementById("message-correct").innerHTML = `Correct!`;
           document.getElementById("correct-modal").style.display = "block";
-          showNextQuestionInit(difficulty, 1000);
-      } else if (correctAnswer.startsWith(userInputNode.value)) {
+          showNextQuestionInit(difficulty, 500);
+      } else if (correctAnswer.startsWith(userInputNode.value.toUpperCase())) {
         userInputNode.style.border = 'solid 10px #009700';
       } else if (userInputNode.value != "Type here") {
-          if (failedInputAttempts < 5) {
+          if (failedInputAttempts < 3) {
             failedInputAttempts += 1;
           } else {
             lifesRemaining -= 1;
-            score -= 1;
             updateLifesCount();
-            userInputNode.onkeyup = function () {};
             userInputNode.disabled = true;
             showCorrectAnswer();
             showNextQuestionInit(difficulty, 1500);
