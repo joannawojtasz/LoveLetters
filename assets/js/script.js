@@ -1,17 +1,6 @@
 /* on load take values from url and start game*/
 window.onload = function () {
-    console.log('page loaded')
-var url_string = window.location.href;
-var url = new URL(url_string);
-var username = url.searchParams.get("name");
-var difficulty = url.searchParams.get("age");
-var color = url.searchParams.get("color");
-let displayname = document.getElementById('username');
-    displayname.innerHTML = username.toUpperCase();
-    displayname.style.color = color;
-    startGame(difficulty);
-    console.log('name')
-    console.log('username')
+    startNewGame()
 };
 document.getElementsByClassName("close")[0].onclick = function () {
     document.getElementById("result-modal").style.display = "none";
@@ -30,13 +19,9 @@ document.getElementById('reset').onclick = function () {
 };
 document.getElementsByTagName('form')[0].addEventListener("submit", play);
 /////////////////////////////////////////////////////////////////////////////////////////////////
+
 const TOTAL_LIFES = 3;
 const TOTAL_QUESTIONS = 10;
-
-
-///////////////////////////////
-
-
 const QUESTION_BANK = [{
         image: 'assets/images/bee.png',
         name: 'bee',
@@ -117,6 +102,24 @@ let questions = [];
 let failedInputAttempts = 0;
 let difficulty = 'easy';
 
+///////////////////////////////
+/**
+ * Setup game according to data from the URL
+ */
+function startNewGame() {
+    var url_string = window.location.href;
+var url = new URL(url_string);
+var username = url.searchParams.get("name");
+var difficulty = url.searchParams.get("age");
+var color = url.searchParams.get("color");
+let displayname = document.getElementById('username');
+    displayname.innerHTML = username.toUpperCase();
+    displayname.style.color = color;
+    startGame(difficulty);
+    console.log('name')
+    console.log('username')
+    startGame()
+};
 /**
  * Setup game according to data from the form
  * call for new game
