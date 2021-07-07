@@ -202,7 +202,6 @@ function displayQuestion(difficulty) {
 function startNewRound(difficulty) {
     currentQuestionNo++
     console.log(currentQuestionNo);
-    document.getElementById("correct-modal").style.display = "none";
     if (lifesRemaining == 0) {
         gameOver(difficulty);
         setTimeout(resetScores, 2000);
@@ -259,7 +258,7 @@ function checkAnswer(difficulty, userInputNode) {
 }
 function showNextQuestionInit(difficulty, timeout) {
   const timeoutRef = setTimeout(() => {
-    startNewRound(difficulty);
+    showNextQuestion(difficulty);
     clearTimeout(timeoutRef);
   }, timeout);
 }
