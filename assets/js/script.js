@@ -7,19 +7,24 @@ let answers = document.getElementsByClassName('answer');
 let questions = [];
 let failedInputAttempts = 0;
 let difficulty = 'easy';
+const TOTAL_LIFES = 3;
+const TOTAL_QUESTIONS = 10;
 ///////////////////////////////
 
 /* on load take values from url and start game*/
 window.onload = function () {
+    console.log('page loaded')
 var url_string = window.location.href;
 var url = new URL(url_string);
 var username = url.searchParams.get("name");
 var difficulty = url.searchParams.get("age");
 var color = url.searchParams.get("color");
- let displayname = document.getElementById('username');
+let displayname = document.getElementById('username');
     displayname.innerHTML = username.toUpperCase();
     displayname.style.color = color;
     startGame(difficulty);
+    console.log('name')
+    console.log('username')
 };
 
 
@@ -109,8 +114,7 @@ const QUESTION_BANK = [{
         name: 'apple',
     }
 ];
-const TOTAL_LIFES = 3;
-const TOTAL_QUESTIONS = 10;
+
 /////////////////////////////////
 
 
