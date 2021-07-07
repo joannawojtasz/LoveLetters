@@ -16,10 +16,8 @@ document.getElementById('reset').onclick = function () {
     resetScores();
     document.getElementById("form-modal").style.display = "block";
 };
-
 document.getElementsByTagName('form')[0].addEventListener("submit", play);
 /////////////////////////////////////////////////////////////////////////////////////////////////
-
 const QUESTION_BANK = [{
         image: 'assets/images/bee.png',
         name: 'bee',
@@ -91,9 +89,16 @@ const QUESTION_BANK = [{
 ];
 const TOTAL_LIFES = 3;
 const TOTAL_QUESTIONS = 10;
-
 /////////////////////////////////
-
+///////////////////////////
+let score = 0;
+let currentQuestionNo = 1;
+let lifesRemaining = TOTAL_LIFES;
+let correctAnswer = '';
+let answers = document.getElementsByClassName('answer');
+let questions = [];
+let failedInputAttempts = 0;
+///////////////////////////////
 function play(event) {
     event.preventDefault();
     let {
@@ -107,7 +112,6 @@ function play(event) {
     displayname.style.color = color;
     startGame(difficulty);
 }
-
 function getFormData() {
     let username = document.getElementById("name").value;
     let difficulty = getAge(Event);
@@ -118,17 +122,14 @@ function getFormData() {
         color
     };
 }
-
 function getAge() {
     let ages = document.getElementsByClassName('age-input');
     return getCheckedValueFromRadioButtons(ages);
 }
-
 function getColor() {
     let colors = document.getElementsByClassName('colors');
     return getCheckedValueFromRadioButtons(colors);
 }
-
 function getCheckedValueFromRadioButtons(buttons) {
     for (let button of buttons) {
         if (button.checked) {
@@ -136,81 +137,62 @@ function getCheckedValueFromRadioButtons(buttons) {
         }
     }
 }
-///////////////////////////
-let score = 0;
-let currentQuestionNo = 1;
-let lifesRemaining = TOTAL_LIFES;
-let correctAnswer = '';
-let answers = document.getElementsByClassName('answer');
-let questions = [];
-///////////////////////////////
-
-
 /**
- * Starts the game: draws questions from question bank, 
+ * Starts the game: draws questions from question bank,
  * sets listeners for users answers and calls for
  * displayQuestion function passing chosen level
  */
 function startGame(difficulty) {
-    questions = QUESTION_BANK.sort(() => 0.5 - Math.random()).slice(0, TOTAL_QUESTIONS); // Akshat Garg
-    if (difficulty == 'easy') {
-        answers[0].addEventListener('click', function () {
-            checkAnswer('easy', this);
-        });
-        answers[1].addEventListener('click', function () {
-            checkAnswer('easy', this);
-        });
-        answers[2].addEventListener('click', function () {
-            checkAnswer('easy', this);
-        });
-        displayQuestion(difficulty);
-        console.log('add listeners')
-    } else if (difficulty == 'medium') {
-        displayQuestion(difficulty);
-    }
+  questions = QUESTION_BANK.sort(() => 0.5 - Math.random()).slice(0, TOTAL_QUESTIONS); // Akshat Garg
+  if (difficulty == 'easy') {
+    answers.forEach(eachAnswer => {
+      eachAnswer.addEventListener('click', answerButtonClickListener);
+    });
+  }
+  displayQuestion(difficulty);
 }
-
+function answerButtonClickListener() {
+  checkAnswer('easy', this);
+}
 /**
- * Displays the task, random question and answer boxes 
+ * Displays the task, random question and answer boxes
  * according to chosen level
  */
 function displayQuestion(difficulty) {
-    const currentQuestionData = questions[currentQuestionNo - 1]; // wrote by Akshat Garg
-    document.getElementById("question").src = currentQuestionData.image;
-    let task = document.getElementById('task');
-    if (difficulty == 'easy') {
-        task.innerHTML = 'Name the item on the picture. <br> What letter does the name start with?';
-        document.getElementById('answer-div-easy').style.display = 'flex;';
-        document.getElementById('answer-div-medium').style.display = 'none';
-        correctAnswer = currentQuestionData.name.charAt(0).toUpperCase();
-        //get 3 random letters in answer boxes
-        for (let answer of answers) {
-            answer.style.backgroundColor = '#fff';
-            answer.style.color = '#000';
-            let letter = getRandomAlphabet();
-            while (letter == correctAnswer) {
-                letter = getRandomAlphabet();
-            }
-            answer.innerHTML = letter;
+  const currentQuestionData = questions[currentQuestionNo - 1]; // wrote by Akshat Garg
+  document.getElementById("question").src = currentQuestionData.image;
+  let task = document.getElementById('task') ;
+  if (difficulty == 'easy') {
+    task.innerHTML = 'Name the item on the picture. <br> What letter does the name start with?';
+    document.getElementById('answer-div-easy').style.display = 'flex;';
+    document.getElementById('answer-div-medium').style.display = 'none';
+    correctAnswer = currentQuestionData.name.charAt(0).toUpperCase();
+    //get 3 random letters in answer boxes
+    for (let answer of answers) {
+        answer.style.backgroundColor = '#fff';
+        answer.style.color = '#000';
+        let letter = getRandomAlphabet();
+        while (letter == correctAnswer) {
+            letter = getRandomAlphabet();
         }
-        // Replace any of the 3 with correct answer
-        answers[Math.floor(Math.random() * 3)].innerHTML = correctAnswer;
-    } else if (difficulty == "medium") {
-        resetInputField();
-        task.innerHTML = 'Name the item on the picture.';
-        document.getElementById('answer-div-easy').style.display = 'none';
-        document.getElementById('answer-div-medium').style.display = 'block';
-        correctAnswer = currentQuestionData.name;
-        let useranswer = document.getElementById('useranswer');
-        useranswer.disabled = false;
-        useranswer.focus();
-        useranswer.onkeyup = function () {
-            checkAnswer('medium', useranswer);
-        };
-        let fail = 0;
+        answer.innerHTML = letter;
     }
+    // Replace any of the 3 with correct answer
+    answers[Math.floor(Math.random() * answers.length)].innerHTML = correctAnswer;
+  } else if (difficulty == "medium") {
+    resetInputField();
+    task.innerHTML = 'Name the item on the picture.';
+    document.getElementById('answer-div-easy').style.display = 'none';
+    document.getElementById('answer-div-medium').style.display = 'block';
+    correctAnswer = currentQuestionData.name;
+    let userInput = document.getElementById('useranswer');
+    useranswer.disabled = false;
+    useranswer.focus();
+    useranswer.onkeyup = function () {
+        checkAnswer('medium', userInput);
+    };
+  }
 }
-
 /**
  * Starts new round of the game
  * checks if score allows continuing the game and
@@ -230,88 +212,86 @@ function startNewRound(difficulty) {
         updateScores()
     }
 }
-
 /**
  * Checks if given answer is correct, updates scores accordingly
  * starts new round
  */
-function checkAnswer(difficulty, useranswer) {
-
-    if (difficulty == 'easy') {
-        if (useranswer.innerHTML == correctAnswer) {
-            useranswer.style.backgroundColor = '#009700';
-            useranswer.style.color = '#fff';
-            score++;
-        } else {
-            useranswer.style.backgroundColor = '#c20000';
-            useranswer.style.color = '#fff';
+function checkAnswer(difficulty, userInputNode) {
+  if (difficulty == 'easy') {
+      if (userInputNode.innerHTML == correctAnswer) {
+        userInputNode.style.backgroundColor = '#009700';
+        userInputNode.style.color = '#fff';
+        score++;
+      } else {
+        userInputNode.style.backgroundColor = '#c20000';
+        userInputNode.style.color = '#fff';
+        lifesRemaining -= 1;
+        const timeoutRef = setTimeout(() => {
+          showCorrectAnswer();
+          clearTimeout(timeoutRef);
+        }, 100);
+        updateLifesCount();
+      }
+      showNextQuestionInit(difficulty, 500);
+  } else if (difficulty == 'medium') {
+      if (userInputNode.value == correctAnswer) {
+          score++;
+          document.getElementById("message-correct").innerHTML = `Correct!`;
+          document.getElementById("correct-modal").style.display = "block";
+          showNextQuestionInit(difficulty, 1000);
+      } else if (correctAnswer.startsWith(userInputNode.value)) {
+        userInputNode.style.border = 'solid 10px #009700';
+      } else if (userInputNode.value != "Type here") {
+          if (failedInputAttempts < 5) {
+            failedInputAttempts += 1;
+          } else {
             lifesRemaining -= 1;
-            setTimeout(showcorrectanswer, 100);
             updateLifesCount();
-        }
-        setTimeout(continueEasyGame, 500);
-
-    } else if (difficulty == 'medium') {
-        if (useranswer.value == correctAnswer) {
-            score++;
-            document.getElementById("message-correct").innerHTML = `Correct!`;
-            document.getElementById("correct-modal").style.display = "block";
-            setTimeout(continueMediumGame, 1000);
-        } else if (correctAnswer.startsWith(useranswer.value)) {
-            useranswer.style.border = 'solid 10px #009700';
-        } else if (useranswer.value != "Type here") {
-            if (fail == 0) {
-                lifesRemaining -= 1;
-                fail += 1;
-                updateLifesCount();
-            } else if (fail < 5) {
-                fail += 1;
-            } else {
-                useranswer.onkeyup = function () {};
-                useranswer.disabled = true;
-                showcorrectanswer('medium');
-                setTimeout(continueMediumGame, 1500);
-            }
-            useranswer.style.border = 'solid 10px #c20000';
-        }
-    }
+            userInputNode.onkeyup = function () {};
+            userInputNode.disabled = true;
+            showCorrectAnswer('medium');
+            showNextQuestionInit(difficulty, 1500);
+          }
+          userInputNode.style.border = 'solid 10px #c20000';
+      }
+  }
 }
-
+function showNextQuestionInit(difficulty, timeout) {
+  const timeoutRef = setTimeout(() => {
+    showNextQuestion(difficulty);
+    clearTimeout(timeoutRef);
+  }, timeout);
+}
 /**
  * shows user the correct answer
  */
-function showcorrectanswer(difficulty) {
-    if (difficulty == 'medium') {
-        document.getElementById("message-correct").innerHTML = `The correct sepelling is <span style="color:#c20000; font-size:2rem">${correctAnswer.toUpperCase()}</span>`;
-        document.getElementById("correct-modal").style.display = "block";
-    } else {
-        for (let answer of answers) {
-            if (answer.innerHTML == correctAnswer) {
-                answer.style.backgroundColor = '#009700';
-                answer.style.color = '#fff';
-            }
-        }
+function showCorrectAnswer(difficulty) {
+  if (difficulty == 'easy') {
+    for (let answer of answers) {
+      if (answer.innerHTML == correctAnswer) {
+          answer.style.backgroundColor = '#009700';
+          answer.style.color = '#fff';
+      }
     }
+  } else {
+    document.getElementById("message-correct").innerHTML = `The correct sepelling is <span style="color:#c20000; font-size:2rem">${correctAnswer.toUpperCase()}</span>`;
+    document.getElementById("correct-modal").style.display = "block";
+  }
 }
-
 /**
- * closes the result modal and calls new round 
+ * closes the result modal and calls new round
  * setting the difficulty to easy
  */
-function continueEasyGame() {
+function showNextQuestion(difficulty) {
+  if (difficulty === 'easy') {
     document.getElementById("correct-modal").style.display = "none";
     startNewRound('easy');
-}
-/**
- * closes the result modal and calls new round 
- * setting the difficulty to medium
- */
-function continueMediumGame() {
+  } else {
     document.getElementById("correct-modal").style.display = "none";
-    fail = 0;
+    failedInputAttempts = 0;
     startNewRound('medium');
+  }
 }
-
 /**
  * reset input field
  */
@@ -319,7 +299,6 @@ function resetInputField() {
     document.getElementById('useranswer').value = '';
     document.getElementById('useranswer').style.border = 'solid 10px  #fff';
 }
-
 /**
  * Returns random letter
  */
@@ -354,21 +333,18 @@ function getRandomAlphabet() {
     ];
     return letters[Math.floor(Math.random() * 26)];
 }
-
-
 /**
  * Displays game over modal with score information
- * and calls for resetting score 
+ * and calls for resetting score
  */
 function gameOver(difficulty) {
     document.getElementById("message").innerHTML = `Game over. Your score: <span style="color:#c20000; font-size:2rem">${score}</span>. <br> Try again!`;
     document.getElementById("result-modal").style.display = "block";
     if (difficulty == 'easy') {
-        resetScores()
-        answers[0].removeEventListener('click', function () {});
-        answers[1].removeEventListener('click', function () {});
-        answers[2].removeEventListener('click', function () {});
-        console.log('remove listeners')
+      resetScores();
+      answers.forEach(eachAnswer => {
+        eachAnswer.removeEventListener('click', answerButtonClickListener);
+      });
     }
     startGame(difficulty);
 }
@@ -383,7 +359,6 @@ function resetScores() {
     lifesRemaining = TOTAL_LIFES;
     updateScores()
 }
-
 /**
  * calls for updating score information displayed
  */
@@ -391,7 +366,6 @@ function updateScores() {
     updateQuestionCount();
     updateLifesCount();
 }
-
 /**
  * update the current question number displayed
  */
@@ -406,7 +380,6 @@ function updateQuestionCount() {
     }
     questionLabel.innerHTML = `Question: ${currentQuestionNo} / 10`;
 }
-
 /**
  * update the remaining lifes displayed
  */
