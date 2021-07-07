@@ -2,11 +2,12 @@
 window.onload = function () {
     startNewGame()
     let closeButtons = document.getElementsByClassName("close");
-for (closeButton of closeButtons) {
-    closeButton.onclick = function () {
-    closeButton.parentNode.style.display = "none";
-};
-};
+    for (closeButton of closeButtons) {
+        closeButton.onclick = function () {
+            closeButton.parentNode.style.display = "none";
+        };
+    };
+}
 
 document.getElementById("restart").onclick = function () {
     document.getElementById("result-modal").style.display = "none";
@@ -108,17 +109,14 @@ let difficulty = 'easy';
  */
 function startNewGame() {
     var url_string = window.location.href;
-var url = new URL(url_string);
-var username = url.searchParams.get("name");
-var difficulty = url.searchParams.get("age");
-var color = url.searchParams.get("color");
-let displayname = document.getElementById('username');
+    var url = new URL(url_string);
+    var username = url.searchParams.get("name");
+    var difficulty = url.searchParams.get("age");
+    var color = url.searchParams.get("color");
+    let displayname = document.getElementById('username');
     displayname.innerHTML = username.toUpperCase();
     displayname.style.color = color;
     startGame(difficulty);
-    console.log('name')
-    console.log('username')
-    startGame()
 };
 /**
  * Setup game according to data from the form
@@ -137,6 +135,7 @@ function play(event) {
     displayname.style.color = color;
     startGame(difficulty);
 }
+
 function getFormData() {
     let username = document.getElementById("name").value;
     difficulty = getAge(Event);
@@ -147,14 +146,17 @@ function getFormData() {
         color
     };
 }
+
 function getAge() {
     let ages = document.getElementsByClassName('age-input');
     return getCheckedValueFromRadioButtons(ages);
 }
+
 function getColor() {
     let colors = document.getElementsByClassName('colors');
     return getCheckedValueFromRadioButtons(colors);
 }
+
 function getCheckedValueFromRadioButtons(buttons) {
     for (let button of buttons) {
         if (button.checked) {
@@ -168,16 +170,17 @@ function getCheckedValueFromRadioButtons(buttons) {
  * displayQuestion function passing chosen level
  */
 function startGame(difficulty) {
-  questions = QUESTION_BANK.sort(() => 0.5 - Math.random()).slice(0, TOTAL_QUESTIONS); // Akshat Garg
-  if (difficulty == 'easy') {
-    for (eachAnswer of answers) {
-      eachAnswer.addEventListener('click', answerButtonClickListener);
+    questions = QUESTION_BANK.sort(() => 0.5 - Math.random()).slice(0, TOTAL_QUESTIONS); // Akshat Garg
+    if (difficulty == 'easy') {
+        for (eachAnswer of answers) {
+            eachAnswer.addEventListener('click', answerButtonClickListener);
+        }
     }
-  }
-  displayQuestion(difficulty);
+    displayQuestion(difficulty);
 }
+
 function answerButtonClickListener() {
-  checkAnswer('easy', this);
+    checkAnswer('easy', this);
 }
 
 /**
@@ -185,39 +188,39 @@ function answerButtonClickListener() {
  * according to chosen level
  */
 function displayQuestion(difficulty) {
-  const currentQuestionData = questions[currentQuestionNo - 1];
-  document.getElementById("question").src = currentQuestionData.image;
-  let task = document.getElementById('task') ;
-  correctAnswer = currentQuestionData.name.toUpperCase();
-  console.log(correctAnswer)
-  if (difficulty == 'easy') {
-    task.innerHTML = 'Name the item on the picture. <br> What letter does the name start with?';
-    document.getElementById('answer-div-easy').style.display = 'flex';
-    document.getElementById('answer-div-medium').style.display = 'none';
-    //get 3 random letters in answer boxes
-    for (let answer of answers) {
-        answer.style.backgroundColor = '#fff';
-        answer.style.color = '#000';
-        let letter = getRandomAlphabet();
-        while (letter == correctAnswer.charAt(0)) {
-            letter = getRandomAlphabet();
+    const currentQuestionData = questions[currentQuestionNo - 1];
+    console.log(currentQuestionData)
+    document.getElementById("question").src = currentQuestionData.image;
+    let task = document.getElementById('task');
+    correctAnswer = currentQuestionData.name.toUpperCase();
+    if (difficulty == 'easy') {
+        task.innerHTML = 'Name the item on the picture. <br> What letter does the name start with?';
+        document.getElementById('answer-div-easy').style.display = 'flex';
+        document.getElementById('answer-div-medium').style.display = 'none';
+        //get 3 random letters in answer boxes
+        for (let answer of answers) {
+            answer.style.backgroundColor = '#fff';
+            answer.style.color = '#000';
+            let letter = getRandomAlphabet();
+            while (letter == correctAnswer.charAt(0)) {
+                letter = getRandomAlphabet();
+            }
+            answer.innerHTML = letter;
         }
-        answer.innerHTML = letter;
+        // Replace any of the 3 with correct answer
+        answers[Math.floor(Math.random() * answers.length)].innerHTML = correctAnswer.charAt(0);
+    } else if (difficulty == "medium") {
+        resetInputField();
+        task.innerHTML = 'Name the item on the picture.';
+        document.getElementById('answer-div-easy').style.display = 'none';
+        document.getElementById('answer-div-medium').style.display = 'block';
+        let userInput = document.getElementById('useranswer');
+        useranswer.disabled = false;
+        useranswer.focus();
+        useranswer.onkeyup = function () {
+            checkAnswer('medium', userInput);
+        };
     }
-    // Replace any of the 3 with correct answer
-    answers[Math.floor(Math.random() * answers.length)].innerHTML = correctAnswer.charAt(0);
-  } else if (difficulty == "medium") {
-    resetInputField();
-    task.innerHTML = 'Name the item on the picture.';
-    document.getElementById('answer-div-easy').style.display = 'none';
-    document.getElementById('answer-div-medium').style.display = 'block';
-    let userInput = document.getElementById('useranswer');
-    useranswer.disabled = false;
-    useranswer.focus();
-    useranswer.onkeyup = function () {
-        checkAnswer('medium', userInput);
-    };
-  }
 }
 /**
  * Starts new round of the game
@@ -225,7 +228,6 @@ function displayQuestion(difficulty) {
  * calls for updateScores and displayQuestion */
 function startNewRound(difficulty) {
     currentQuestionNo++
-    console.log(currentQuestionNo);
     if (lifesRemaining == 0) {
         gameOver(difficulty);
         startNextgameInit(difficulty, 2000)
@@ -242,82 +244,82 @@ function startNewRound(difficulty) {
  * starts new round
  */
 function checkAnswer(difficulty, userInputNode) {
-  if (difficulty == 'easy') {
-      if (userInputNode.innerHTML == correctAnswer.charAt(0)) {
-        userInputNode.style.backgroundColor = '#009700';
-        userInputNode.style.color = '#fff';
-        score++;
-      } else {
-        userInputNode.style.backgroundColor = '#c20000';
-        userInputNode.style.color = '#fff';
-        lifesRemaining -= 1;
-        const timeoutRef = setTimeout(() => {
-          showCorrectAnswer();
-          clearTimeout(timeoutRef);
-        }, 100);
-        updateLifesCount();
-      }
-      showNextQuestionInit(difficulty, 500);
-  } else if (difficulty == 'medium') {
-      if (userInputNode.value.toUpperCase() == correctAnswer) {
-          score++;
-          document.getElementById("message-correct").innerHTML = `Correct!`;
-          document.getElementById("correct-modal").style.display = "block";
-          showNextQuestionInit(difficulty, 1500);
-      } else if (correctAnswer.startsWith(userInputNode.value.toUpperCase())) {
-        userInputNode.style.border = 'solid 10px #009700';
-      } else if (userInputNode.value != "Type here") {
-          if (failedInputAttempts < 3) {
-            failedInputAttempts += 1;
-          } else {
+    if (difficulty == 'easy') {
+        if (userInputNode.innerHTML == correctAnswer.charAt(0)) {
+            userInputNode.style.backgroundColor = '#009700';
+            userInputNode.style.color = '#fff';
+            score++;
+        } else {
+            userInputNode.style.backgroundColor = '#c20000';
+            userInputNode.style.color = '#fff';
             lifesRemaining -= 1;
+            const timeoutRef = setTimeout(() => {
+                showCorrectAnswer();
+                clearTimeout(timeoutRef);
+            }, 100);
             updateLifesCount();
-            userInputNode.disabled = true;
-            showCorrectAnswer();
+        }
+        showNextQuestionInit(difficulty, 500);
+    } else if (difficulty == 'medium') {
+        if (userInputNode.value.toUpperCase() == correctAnswer) {
+            score++;
+            document.getElementById("message-correct").innerHTML = `Correct!`;
+            document.getElementById("correct-modal").style.display = "block";
             showNextQuestionInit(difficulty, 1500);
-          }
-          userInputNode.style.border = 'solid 10px #c20000';
-      }
-  }
+        } else if (correctAnswer.startsWith(userInputNode.value.toUpperCase())) {
+            userInputNode.style.border = 'solid 10px #009700';
+        } else if (userInputNode.value != "Type here") {
+            if (failedInputAttempts < 3) {
+                failedInputAttempts += 1;
+            } else {
+                lifesRemaining -= 1;
+                updateLifesCount();
+                userInputNode.disabled = true;
+                showCorrectAnswer();
+                showNextQuestionInit(difficulty, 1500);
+            }
+            userInputNode.style.border = 'solid 10px #c20000';
+        }
+    }
 }
 /**
  * Initialize new question after delay
  */
 function showNextQuestionInit(difficulty, timeout) {
-  const timeoutRef = setTimeout(() => {
-    showNextQuestion(difficulty);
-    clearTimeout(timeoutRef);
-  }, timeout);
+    const timeoutRef = setTimeout(() => {
+        showNextQuestion(difficulty);
+        clearTimeout(timeoutRef);
+    }, timeout);
 }
 /**
  * shows user the correct answer
  */
 function showCorrectAnswer() {
-  if (difficulty == 'easy') {
-    for (let answer of answers) {
-      if (answer.innerHTML == correctAnswer.charAt(0)) {
-          answer.style.backgroundColor = '#009700';
-          answer.style.color = '#fff';
-      }
+    if (difficulty == 'easy') {
+        for (let answer of answers) {
+            if (answer.innerHTML == correctAnswer.charAt(0)) {
+                answer.style.backgroundColor = '#009700';
+                answer.style.color = '#fff';
+            }
+        }
+    } else {
+        document.getElementById("message-correct").innerHTML = `The correct sepelling is <span style="color:#c20000; font-size:2rem">${correctAnswer}</span>`;
+        document.getElementById("correct-modal").style.display = "block";
     }
-  } else {
-    document.getElementById("message-correct").innerHTML = `The correct sepelling is <span style="color:#c20000; font-size:2rem">${correctAnswer}</span>`;
-    document.getElementById("correct-modal").style.display = "block";
-  }
 }
 /**
  * closes the result modal and calls new round
  * setting the difficulty to easy
  */
 function showNextQuestion(difficulty) {
-  if (difficulty === 'easy') {
-    document.getElementById("correct-modal").style.display = "none";
-    startNewRound('easy');
-  } else {
-    document.getElementById("correct-modal").style.display = "none";
-    failedInputAttempts = 0;
-    startNewRound('medium');
-  }
+    if (difficulty === 'easy') {
+        document.getElementById("correct-modal").style.display = "none";
+        startNewRound('easy');
+    } else {
+        document.getElementById("correct-modal").style.display = "none";
+        failedInputAttempts = 0;
+        startNewRound('medium');
+    }
 }
 /**
  * reset input field
@@ -369,10 +371,10 @@ function gameOver(difficulty) {
     document.getElementById("result-modal").style.display = "block";
     if (difficulty == 'easy') {
         for (eachAnswer of answers) {
-        eachAnswer.removeEventListener('click', answerButtonClickListener);
-      }
+            eachAnswer.removeEventListener('click', answerButtonClickListener);
+        }
     }
-    
+
 }
 /**
  * Initialize new game after delay
@@ -381,16 +383,15 @@ function startNextgameInit(difficulty, timeout) {
     const timeoutRef = setTimeout(() => {
         resetScores()
         startGame(difficulty);
-      clearTimeout(timeoutRef);
+        clearTimeout(timeoutRef);
     }, timeout);
-  }
+}
 
 /**
  * Resets the scores
  * to use before new game
  */
 function resetScores() {
-    // document.getElementById("result-modal").style.display = "none";
     score = 0;
     currentQuestionNo = 1;
     lifesRemaining = TOTAL_LIFES;
