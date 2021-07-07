@@ -238,7 +238,7 @@ function checkAnswer(difficulty, userInputNode) {
 			userInputNode.style.backgroundColor = '#c20000';
 			userInputNode.style.color = '#fff';
 			lifesRemaining -= 1;
-			const timeoutRef = setTimeout(() =>  // // byAkshat Garg
+			const timeoutRef = setTimeout(() => { // byAkshat Garg
 				showCorrectAnswer();
 				clearTimeout(timeoutRef);
 			}, 100); 
