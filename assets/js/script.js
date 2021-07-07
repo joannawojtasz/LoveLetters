@@ -13,7 +13,7 @@ document.getElementById("restart").onclick = function () {
     document.getElementById("result-modal").style.display = "none";
 };
 document.getElementById('reset').onclick = function () {
-    resetScores(); 
+    resetScores();
     document.getElementById("form-modal").style.display = "block";
 };
 
@@ -164,6 +164,7 @@ function startGame(difficulty) {
             checkAnswer('easy', this);
         });
         displayQuestion(difficulty);
+        console.log('add listeners')
     } else if (difficulty == 'medium') {
         displayQuestion(difficulty);
     }
@@ -216,13 +217,13 @@ function displayQuestion(difficulty) {
  * calls for updateScores and displayQuestion */
 function startNewRound(difficulty) {
     currentQuestionNo++
-    console.log(currentQuestionNo); 
+    console.log(currentQuestionNo);
     if (lifesRemaining == 0) {
         gameOver(difficulty);
         setTimeout(resetScores, 2000);
     } else if (currentQuestionNo > 10) {
         gameOver(difficulty);
-        setTimeout(resetScores, 2000); 
+        setTimeout(resetScores, 2000);
     } else {
         correctAnswer = '';
         displayQuestion(difficulty);
@@ -363,9 +364,11 @@ function gameOver(difficulty) {
     document.getElementById("message").innerHTML = `Game over. Your score: <span style="color:#c20000; font-size:2rem">${score}</span>. <br> Try again!`;
     document.getElementById("result-modal").style.display = "block";
     if (difficulty == 'easy') {
-        answers[0].removeEventListener('click', function () {});
-    answers[1].removeEventListener('click', function () {});
-    answers[2].removeEventListener('click', function () {});
+        resetScores()
+        answers[0].removeEventListener('click', function ());
+        answers[1].removeEventListener('click', function ());
+        answers[2].removeEventListener('click', function ());
+        console.log('remove listeners')
     }
     startGame(difficulty);
 }
