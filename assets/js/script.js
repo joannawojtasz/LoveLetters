@@ -11,6 +11,8 @@ document.getElementsByClassName("close")[1].onclick = function () {
 };
 document.getElementById("restart").onclick = function () {
     document.getElementById("result-modal").style.display = "none";
+    resetScores()
+    startGame(difficulty)
 };
 document.getElementById('reset').onclick = function () {
     resetScores();
@@ -100,6 +102,11 @@ let questions = [];
 let failedInputAttempts = 0;
 let difficulty = 'easy';
 ///////////////////////////////
+
+/**
+ * Setup game according to data from the form
+ * call for new game start
+ */
 function play(event) {
     event.preventDefault();
     let {
@@ -353,7 +360,7 @@ function gameOver(difficulty) {
  */
 function resetScores() {
     // document.getElementById("result-modal").style.display = "none";
-    score = 1;
+    score = 0;
     currentQuestionNo = 1;
     lifesRemaining = TOTAL_LIFES;
     updateScores()
