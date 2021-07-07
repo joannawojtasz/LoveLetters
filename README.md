@@ -26,19 +26,19 @@ Love letters game is based on a simple spelling challenge. The game displays pic
 
 * Start page
 
-![start page](assets/images/start.png)
+[start page](assets/images/start.png)
 
 * User details form
 
-![form](assets/images/form.png)
+[form](assets/images/form.png)
 
 * Easier version
 
-![easy game](assets/images/easy.png)
+[easy game](assets/images/easy.png)
 
 * More difficult version
 
-![medium page](assets/images/medium.png) 
+[medium page](assets/images/medium.png) 
 
 ### Changes
 

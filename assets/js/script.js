@@ -1,6 +1,6 @@
 /* on load take values from url and start game*/
 window.onload = function() {
-	startNewGame();
+	startNewGame()
 };
 document.getElementsByClassName("close")[0].onclick = function() {
 	document.getElementById("form-modal").style.display = "none";
@@ -239,8 +239,8 @@ function checkAnswer(difficulty, userInputNode) {
 			userInputNode.style.color = '#fff';
 			lifesRemaining -= 1;
 			const timeoutRef = setTimeout(() => // by Akshat Garg
-				showCorrectAnswer(); // by Akshat Garg
-				clearTimeout(timeoutRef); // by Akshat Garg
+				showCorrectAnswer() // by Akshat Garg
+				clearTimeout(timeoutRef) // by Akshat Garg
 			}, 100); // by Akshat Garg
 			updateLifesCount();
 		}
