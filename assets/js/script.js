@@ -11,7 +11,7 @@ document.getElementsByClassName("close")[1].onclick = function () {
 document.getElementById("restart").onclick = function () {
     document.getElementById("result-modal").style.display = "none";
     resetScores()
-    startGame(difficulty)
+    startNewGame()
 };
 document.getElementById('reset').onclick = function () {
     resetScores();
@@ -263,7 +263,7 @@ function checkAnswer(difficulty, userInputNode) {
           score++;
           document.getElementById("message-correct").innerHTML = `Correct!`;
           document.getElementById("correct-modal").style.display = "block";
-          showNextQuestionInit(difficulty, 500);
+          showNextQuestionInit(difficulty, 1500);
       } else if (correctAnswer.startsWith(userInputNode.value.toUpperCase())) {
         userInputNode.style.border = 'solid 10px #009700';
       } else if (userInputNode.value != "Type here") {
