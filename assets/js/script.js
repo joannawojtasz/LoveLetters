@@ -10,8 +10,7 @@ document.getElementsByClassName("close")[1].onclick = function () {
     document.getElementById("correct-modal").style.display = "none";
 };
 document.getElementById("restart").onclick = function () {
-  document.getElementById("result-modal").style.display = "none";
-  restartGame();
+    document.getElementById("result-modal").style.display = "none";
 };
 document.getElementById('reset').onclick = function () {
     resetScores();
@@ -185,7 +184,7 @@ function displayQuestion(difficulty) {
     task.innerHTML = 'Name the item on the picture.';
     document.getElementById('answer-div-easy').style.display = 'none';
     document.getElementById('answer-div-medium').style.display = 'block';
-    correctAnswer = currentQuestionData.name;
+    correctAnswer = currentQuestionData.name.toUpperCase();
     let userInput = document.getElementById('useranswer');
     useranswer.disabled = false;
     useranswer.focus();
@@ -269,13 +268,13 @@ function showNextQuestionInit(difficulty, timeout) {
 function showCorrectAnswer(difficulty) {
   if (difficulty == 'easy') {
     for (let answer of answers) {
-      if (answer.innerHTML == correctAnswer.toUpperCase()) {
+      if (answer.innerHTML == correctAnswer) {
           answer.style.backgroundColor = '#009700';
           answer.style.color = '#fff';
       }
     }
   } else {
-    document.getElementById("message-correct").innerHTML = `The correct sepelling is <span style="color:#c20000; font-size:2rem">${correctAnswer}</span>`;
+    document.getElementById("message-correct").innerHTML = `The correct sepelling is <span style="color:#c20000; font-size:2rem">${correctAnswer.toUpperCase()}</span>`;
     document.getElementById("correct-modal").style.display = "block";
   }
 }
@@ -342,25 +341,23 @@ function gameOver(difficulty) {
     document.getElementById("message").innerHTML = `Game over. Your score: <span style="color:#c20000; font-size:2rem">${score}</span>. <br> Try again!`;
     document.getElementById("result-modal").style.display = "block";
     if (difficulty == 'easy') {
+      resetScores();
       for (eachAnswer of answers) {
         eachAnswer.removeEventListener('click', answerButtonClickListener);
       }
     }
+    startGame(difficulty);
 }
 /**
  * Resets the scores
  * to use before new game
  */
 function resetScores() {
+    document.getElementById("result-modal").style.display = "none";
     score = 1;
     currentQuestionNo = 1;
     lifesRemaining = TOTAL_LIFES;
     updateScores()
-}
-function restartGame() {
-  document.getElementById("result-modal").style.display = "none";
-  resetScores();
-  startGame(difficulty);
 }
 /**
  * calls for updating score information displayed
