@@ -160,14 +160,14 @@ function answerButtonClickListener() {
  * according to chosen level
  */
 function displayQuestion(difficulty) {
-  const currentQuestionData = questions[currentQuestionNo - 1]; // wrote by Akshat Garg
+  const currentQuestionData = questions[currentQuestionNo - 1];
   document.getElementById("question").src = currentQuestionData.image;
   let task = document.getElementById('task') ;
+  correctAnswer = currentQuestionData.name.toUpperCase();
   if (difficulty == 'easy') {
     task.innerHTML = 'Name the item on the picture. <br> What letter does the name start with?';
     document.getElementById('answer-div-easy').style.display = 'flex;';
     document.getElementById('answer-div-medium').style.display = 'none';
-    correctAnswer = currentQuestionData.name.toUpperCase();
     //get 3 random letters in answer boxes
     for (let answer of answers) {
         answer.style.backgroundColor = '#fff';
@@ -207,7 +207,6 @@ function startNewRound(difficulty) {
         gameOver(difficulty);
         setTimeout(resetScores, 2000);
     } else {
-        correctAnswer = '';
         displayQuestion(difficulty);
         updateScores()
     }
