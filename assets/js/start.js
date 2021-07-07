@@ -1,4 +1,4 @@
-document.getElementsByClassName("play")[0].onclick = function () {
+document.getElementsByClassName("pulse-button")[0].onclick = function () {
     document.getElementById("form-modal").style.display = "block";
 };
 
