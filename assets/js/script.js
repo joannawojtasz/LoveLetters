@@ -3,8 +3,6 @@ with possibility to close the window or enter the game*/
 window.onload = function () {
     document.getElementById("form-modal").style.display = "block";
 };
-
-
 document.getElementsByClassName("close")[0].onclick = function () {
     document.getElementById("result-modal").style.display = "none";
 };
@@ -144,7 +142,9 @@ let currentQuestionNo = 1;
 let lifesRemaining = TOTAL_LIFES;
 let correctAnswer = '';
 let answers = document.getElementsByClassName('answer');
-let fail = 0;
+let questions = [];
+///////////////////////////////
+
 
 /**
  * Starts the game: draws questions from question bank, 
@@ -152,7 +152,6 @@ let fail = 0;
  * displayQuestion function passing chosen level
  */
 function startGame(difficulty) {
-    let questions = [];
     questions = QUESTION_BANK.sort(() => 0.5 - Math.random()).slice(0, TOTAL_QUESTIONS); // Akshat Garg
     if (difficulty == 'easy') {
         answers[0].addEventListener('click', function () {
@@ -164,9 +163,9 @@ function startGame(difficulty) {
         answers[2].addEventListener('click', function () {
             checkAnswer('easy', this);
         });
-        displayQuestion(difficulty, questions);
+        displayQuestion(difficulty);
     } else if (difficulty == 'medium') {
-        displayQuestion(difficulty, questions);
+        displayQuestion(difficulty);
     }
 }
 
@@ -174,7 +173,7 @@ function startGame(difficulty) {
  * Displays the task, random question and answer boxes 
  * according to chosen level
  */
-function displayQuestion(difficulty, questions) {
+function displayQuestion(difficulty) {
     const currentQuestionData = questions[currentQuestionNo - 1]; // wrote by Akshat Garg
     document.getElementById("question").src = currentQuestionData.image;
     let task = document.getElementById('task');
@@ -207,6 +206,7 @@ function displayQuestion(difficulty, questions) {
         useranswer.onkeyup = function () {
             checkAnswer('medium', useranswer);
         };
+        let fail = 0;
     }
 }
 
