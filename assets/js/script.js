@@ -192,7 +192,7 @@ function displayQuestion(difficulty) {
   console.log(correctAnswer)
   if (difficulty == 'easy') {
     task.innerHTML = 'Name the item on the picture. <br> What letter does the name start with?';
-    document.getElementById('answer-div-easy').style.display = 'flex;';
+    document.getElementById('answer-div-easy').style.display = 'flex';
     document.getElementById('answer-div-medium').style.display = 'none';
     //get 3 random letters in answer boxes
     for (let answer of answers) {
@@ -228,10 +228,10 @@ function startNewRound(difficulty) {
     console.log(currentQuestionNo);
     if (lifesRemaining == 0) {
         gameOver(difficulty);
-        setTimeout(resetScores, 2000);
+        startNextgameInit(difficulty, 2000)
     } else if (currentQuestionNo > 10) {
         gameOver(difficulty);
-        setTimeout(resetScores, 2000);
+        startNextgameInit(difficulty, 2000)
     } else {
         displayQuestion(difficulty);
         updateScores()
@@ -280,6 +280,9 @@ function checkAnswer(difficulty, userInputNode) {
       }
   }
 }
+/**
+ * Initialize new question after delay
+ */
 function showNextQuestionInit(difficulty, timeout) {
   const timeoutRef = setTimeout(() => {
     showNextQuestion(difficulty);
@@ -369,8 +372,19 @@ function gameOver(difficulty) {
         eachAnswer.removeEventListener('click', answerButtonClickListener);
       }
     }
-    startGame(difficulty);
+    
 }
+/**
+ * Initialize new game after delay
+ */
+function startNextgameInit(difficulty, timeout) {
+    const timeoutRef = setTimeout(() => {
+        resetScores()
+        startGame(difficulty);
+      clearTimeout(timeoutRef);
+    }, timeout);
+  }
+
 /**
  * Resets the scores
  * to use before new game
