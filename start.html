@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@200&family=Poppins:wght@300&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Love letters</title>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+</head>
+
+<body>
+
+    <header>
+        <h1>
+            <img class="logo" src="assets/images/logo.png" alt="logo">
+            Love letters
+        </h1>
+        <h2>Learn to spell</h2>
+    </header>
+
+    <div id="game-field">
+        <div id="scores">
+            <div id="question-count">
+                <div class="circle-conrainer">
+                    <div class="qcount circle green"></div>
+                    <div class="qcount circle"></div>
+                    <div class="qcount circle"></div>
+                    <div class="qcount circle"></div>
+                    <div class="qcount circle"></div>
+                    <div class="qcount circle"></div>
+                    <div class="qcount circle"></div>
+                    <div class="qcount circle"></div>
+                    <div class="qcount circle"></div>
+                    <div class="qcount circle"></div>
+                </div>
+                <p id="qcount">Question: 1 / 10</p>
+            </div>
+            <div id="username">
+                <h3 id="username">NAME</h3>
+            </div>
+            <div id="lifes-left">
+                <div class="circle-conrainer">
+                    <div class="lcount circle red"></div>
+                    <div class="lcount circle red"></div>
+                    <div class="lcount circle red"></div>
+                </div>
+                <p id="lcount">Lifes left: 3 / 3</p>
+            </div>
+        </div>
+        <div id="task">
+            Name the item on the picture. <br> What letter does the name start with?
+        </div>
+        <div id="question-div">
+            <img src="assets/images/question.png" alt="question" id="question">
+        </div>
+        <div id="answer-div-easy">
+            <div class="answer">A</div>
+            <div class="answer">B</div>
+            <div class="answer">Q</div>
+        </div>
+        <div id="answer-div-medium">
+            <input type="text" name="useranswer" id="useranswer" placeholder="Type here">
+        </div>
+    </div>
+    <div>
+        <div id="navigation">
+            <a href="index.html" id="back">Take me back</a>
+            <a href="#index" id="reset">Reset game</a>
+        </div>
+    </div>
+
+    <!-- The Modal prepared according to W3schools.com example -->
+    <div id="initial-modal" class="modal">
+
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <button id="start" type="button">
+                <h2>Click here to play</h2>
+            </button>
+        </div>
+
+    </div>
+
+<!-- Modal created  -->  
+    <div id="form-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <form>
+                <div class="form-div">
+                    <label for="name">Players name:</label>
+                    <input type="name" name="name" id="name" placeholder="Name" pattern="[a-zA-Z]{0,40}" required>
+                </div>
+                <div class="form-div">
+                    <p>Age:</p>
+
+                    <div class="age" id="easy-div">
+                        <input type="radio" id="easy" name="age" value="easy" class="age-input" required>
+                        <label for="easy"> &lt; 6</label>
+                    </div>
+
+                    <div class="age" id="medium-div">
+                        <input type="radio" id="medium" name="age" value="medium" class="age-input">
+                        <label for="medium"> 6 &gt;</label>
+                    </div>
+                </div>
+                <div class="form-div">
+                    <p>Favourite color</p>
+                    <label class="container">
+                        <input type="radio" name="color" value="green" class="colors" required>
+                        <span class="checkmark" id="green"></span>
+                    </label>
+                    <label class="container">
+                        <input type="radio" name="color" value="blue" class="colors">
+                        <span class="checkmark" id="blue"></span>
+                    </label>
+                    <label class="container">
+                        <input type="radio" name="color" value="red" class="colors">
+                        <span class="checkmark" id="red"></span>
+                    </label>
+                    <label class="container">
+                        <input type="radio" name="color" value="yellow" class="colors">
+                        <span class="checkmark" id="yellow"></span>
+                    </label>
+                </div>
+
+                <button id="play" type="submit" value="submit">
+                    <h2>Play</h2>
+                </button>
+            </form>
+        </div>
+
+
+    </div>
+
+    <div id="result-modal" class="modal">
+
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p id="message"></p>
+        </div>
+
+    </div>
+
+    <script src="assets/js/script.js"></script>
+
+</body>
+
+</html>

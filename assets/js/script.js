@@ -16,7 +16,7 @@ document.getElementById("restart").onclick = function () {
 };
 document.getElementById('reset').onclick = function () {
     resetScores(); 
-    // document.getElementById("form-modal").style.display = "block";
+    document.getElementById("form-modal").style.display = "block";
 };
 
 document.getElementsByTagName('form')[0].addEventListener("submit", play);
@@ -147,11 +147,13 @@ let answers = document.getElementsByClassName('answer');
 let fail = 0;
 
 /**
- * Starts the game by setting listeners for users answers
- * at easy level and  and starting displayQuestion function 
- * according to chosen level
+ * Starts the game: draws questions from question bank, 
+ * sets listeners for users answers and calls for
+ * displayQuestion function passing chosen level
  */
 function startGame(difficulty) {
+    let questions = [];
+    questions = QUESTION_BANK.sort(() => 0.5 - Math.random()).slice(0, TOTAL_QUESTIONS); // Akshat Garg
     if (difficulty == 'easy') {
         answers[0].addEventListener('click', function () {
             checkAnswer('easy', this);
@@ -162,9 +164,9 @@ function startGame(difficulty) {
         answers[2].addEventListener('click', function () {
             checkAnswer('easy', this);
         });
-        displayQuestion(difficulty);
+        displayQuestion(difficulty, questions);
     } else if (difficulty == 'medium') {
-        displayQuestion(difficulty);
+        displayQuestion(difficulty, questions);
     }
 }
 
@@ -172,9 +174,7 @@ function startGame(difficulty) {
  * Displays the task, random question and answer boxes 
  * according to chosen level
  */
-function displayQuestion(difficulty) {
-    let questions = [];
-    questions = QUESTION_BANK.sort(() => 0.5 - Math.random()).slice(0, TOTAL_QUESTIONS); // Akshat Garg
+function displayQuestion(difficulty, questions) {
     const currentQuestionData = questions[currentQuestionNo - 1]; // wrote by Akshat Garg
     document.getElementById("question").src = currentQuestionData.image;
     let task = document.getElementById('task');
@@ -219,14 +219,12 @@ function startNewRound(difficulty) {
     if (lifesRemaining == 0) {
         gameOver(difficulty);
         setTimeout(resetScores, 2000);
-    } else {
-        if (currentQuestionNo <= 10) {
+    } else if (currentQuestionNo <= 10) {
             correctAnswer = '';
             displayQuestion(difficulty);
-        } else {
-            gameOver(difficulty);
-            setTimeout(resetScores, 3000);
-        }
+    } else {
+        gameOver(difficulty);
+        setTimeout(resetScores, 2000);
     }
 }
 
@@ -265,7 +263,7 @@ function checkAnswer(difficulty, useranswer) {
             } else if (fail < 5) {
                 fail += 1;
             } else {
-                useranswer.onkeyup = function () {};
+                useranswer.onkeyup = function() {};
                 showcorrectanswer('medium');
                 setTimeout(continueMediumGame, 1500);
             }
@@ -360,8 +358,8 @@ function getRandomAlphabet() {
 function gameOver(difficulty) {
     document.getElementById("message").innerHTML = `Game over. Your score: <span style="color:#c20000; font-size:2rem">${score}</span>. <br> Try again!`;
     document.getElementById("result-modal").style.display = "block";
-    displayQuestion(difficulty);
-
+    
+    startGame(difficulty);
 }
 /**
  * Resets the scores
