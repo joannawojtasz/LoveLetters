@@ -1,15 +1,4 @@
-///////////////////////////
-let score = 0;
-let currentQuestionNo = 1;
-let lifesRemaining = TOTAL_LIFES;
-let correctAnswer = '';
-let answers = document.getElementsByClassName('answer');
-let questions = [];
-let failedInputAttempts = 0;
-let difficulty = 'easy';
-const TOTAL_LIFES = 3;
-const TOTAL_QUESTIONS = 10;
-///////////////////////////////
+
 
 /* on load take values from url and start game*/
 window.onload = function () {
@@ -26,8 +15,6 @@ let displayname = document.getElementById('username');
     console.log('name')
     console.log('username')
 };
-
-
 document.getElementsByClassName("close")[0].onclick = function () {
     document.getElementById("result-modal").style.display = "none";
 };
@@ -45,6 +32,20 @@ document.getElementById('reset').onclick = function () {
 };
 document.getElementsByTagName('form')[0].addEventListener("submit", play);
 /////////////////////////////////////////////////////////////////////////////////////////////////
+
+let score = 0;
+let currentQuestionNo = 1;
+let lifesRemaining = TOTAL_LIFES;
+let correctAnswer = '';
+let answers = document.getElementsByClassName('answer');
+let questions = [];
+let failedInputAttempts = 0;
+let difficulty = 'easy';
+const TOTAL_LIFES = 3;
+const TOTAL_QUESTIONS = 10;
+///////////////////////////////
+
+
 const QUESTION_BANK = [{
         image: 'assets/images/bee.png',
         name: 'bee',
