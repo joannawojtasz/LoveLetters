@@ -173,7 +173,7 @@ function displayQuestion(difficulty) {
         answer.style.backgroundColor = '#fff';
         answer.style.color = '#000';
         let letter = getRandomAlphabet();
-        while (letter == correctAnswer) {
+        while (letter == correctAnswer.charAt(0)) {
             letter = getRandomAlphabet();
         }
         answer.innerHTML = letter;
@@ -246,6 +246,7 @@ function checkAnswer(difficulty, userInputNode) {
             failedInputAttempts += 1;
           } else {
             lifesRemaining -= 1;
+            score -= 1;
             updateLifesCount();
             userInputNode.onkeyup = function () {};
             userInputNode.disabled = true;
@@ -274,7 +275,7 @@ function showCorrectAnswer() {
       }
     }
   } else {
-    document.getElementById("message-correct").innerHTML = `The correct sepelling is <span style="color:#c20000; font-size:2rem">${correctAnswer.toUpperCase()}</span>`;
+    document.getElementById("message-correct").innerHTML = `The correct sepelling is <span style="color:#c20000; font-size:2rem">${correctAnswer}</span>`;
     document.getElementById("correct-modal").style.display = "block";
   }
 }
@@ -341,8 +342,7 @@ function gameOver(difficulty) {
     document.getElementById("message").innerHTML = `Game over. Your score: <span style="color:#c20000; font-size:2rem">${score}</span>. <br> Try again!`;
     document.getElementById("result-modal").style.display = "block";
     if (difficulty == 'easy') {
-      resetScores();
-      for (eachAnswer of answers) {
+        for (eachAnswer of answers) {
         eachAnswer.removeEventListener('click', answerButtonClickListener);
       }
     }
@@ -353,7 +353,7 @@ function gameOver(difficulty) {
  * to use before new game
  */
 function resetScores() {
-    document.getElementById("result-modal").style.display = "none";
+    // document.getElementById("result-modal").style.display = "none";
     score = 1;
     currentQuestionNo = 1;
     lifesRemaining = TOTAL_LIFES;
