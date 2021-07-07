@@ -174,9 +174,8 @@ function startGame(difficulty) {
  */
 function displayQuestion(difficulty) {
     let questions = [];
-    questions = QUESTION_BANK.sort(() => 0.5 - Math.random()).slice(0, TOTAL_QUESTIONS);
-    const currentQuestionData = questions[currentQuestionNo - 1];
-    console.log(currentQuestionData.image);
+    questions = QUESTION_BANK.sort(() => 0.5 - Math.random()).slice(0, TOTAL_QUESTIONS); // Akshat Garg
+    const currentQuestionData = questions[currentQuestionNo - 1]; // wrote by Akshat Garg
     document.getElementById("question").src = currentQuestionData.image;
     let task = document.getElementById('task');
 
@@ -187,8 +186,8 @@ function displayQuestion(difficulty) {
         correctAnswer = currentQuestionData.name.charAt(0).toUpperCase();
         //get 3 random letters in answer boxes
         for (let answer of answers) {
-            answer.style.backgroundColor = 'white';
-            answer.style.color = 'black';
+            answer.style.backgroundColor = '#fff';
+            answer.style.color = '#000';
             let letter = getRandomAlphabet();
             while (letter == correctAnswer) {
                 letter = getRandomAlphabet();
@@ -240,11 +239,11 @@ function checkAnswer(difficulty, useranswer) {
     if (difficulty == 'easy') {
         if (useranswer.innerHTML == correctAnswer) {
             useranswer.style.backgroundColor = '#009700';
-            useranswer.style.color = 'white';
+            useranswer.style.color = '#fff';
             score++;
         } else {
             useranswer.style.backgroundColor = '#c20000';
-            useranswer.style.color = 'white';
+            useranswer.style.color = '#fff';
             lifesRemaining -= 1;
             setTimeout(showcorrectanswer, 100);
         }
@@ -286,7 +285,7 @@ function showcorrectanswer(difficulty) {
         for (let answer of answers) {
             if (answer.innerHTML == correctAnswer) {
                 answer.style.backgroundColor = '#009700';
-                answer.style.color = 'white';
+                answer.style.color = '#fff';
             }
         }
     }
@@ -315,7 +314,7 @@ function continueMediumGame() {
  */
 function resetInputField() {
     document.getElementById('useranswer').value = '';
-    document.getElementById('useranswer').style.border = 'solid 10px  white';
+    document.getElementById('useranswer').style.border = 'solid 10px  #fff';
 }
 
 /**
@@ -393,7 +392,7 @@ function updateQuestionCount() {
     let questionCount = document.getElementsByClassName('qcount');
     let questionLabel = document.getElementById('qcount');
     for (let i = 0; i < 10; i++) {
-        questionCount[i].style.backgroundColor = 'white';
+        questionCount[i].style.backgroundColor = '#fff';
     }
     for (let i = 0; i < currentQuestionNo; i++) {
         questionCount[i].style.backgroundColor = '#009700';
@@ -408,7 +407,7 @@ function updateLifesCount() {
     let lifesCount = document.getElementsByClassName('lcount');
     let lifesLabel = document.getElementById('lcount');
     for (let i = 0; i < 3; i++) {
-        lifesCount[i].style.backgroundColor = 'white';
+        lifesCount[i].style.backgroundColor = '#fff';
     }
     for (let i = 0; i < lifesRemaining; i++) {
         lifesCount[i].style.backgroundColor = '#c20000';

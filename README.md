@@ -40,6 +40,10 @@ Love letters game is based on a simple spelling challenge. The game displays pic
 
 ### Changes
 
+* Index page was added for clarity. 
+* Rules and About were introduced
+* 
+
 ### Features
 
 #### implemented
@@ -95,4 +99,6 @@ Solution: Rearange the script. Set a new function for displaying result that tur
 
 * Animation was created according to w3 schools instructions
 [CSS Animations](https://www.w3schools.com/css/css3_animations.asp)
+
+* Shuffling array Akshat Garg (mentor)
 
