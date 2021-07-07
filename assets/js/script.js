@@ -98,6 +98,7 @@ let correctAnswer = '';
 let answers = document.getElementsByClassName('answer');
 let questions = [];
 let failedInputAttempts = 0;
+let difficulty = 'easy';
 ///////////////////////////////
 function play(event) {
     event.preventDefault();
@@ -114,7 +115,7 @@ function play(event) {
 }
 function getFormData() {
     let username = document.getElementById("name").value;
-    let difficulty = getAge(Event);
+    difficulty = getAge(Event);
     let color = getColor(Event);
     return {
         username,
