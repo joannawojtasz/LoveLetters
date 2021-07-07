@@ -177,7 +177,6 @@ function displayQuestion(difficulty) {
     const currentQuestionData = questions[currentQuestionNo - 1]; // wrote by Akshat Garg
     document.getElementById("question").src = currentQuestionData.image;
     let task = document.getElementById('task');
-
     if (difficulty == 'easy') {
         task.innerHTML = 'Name the item on the picture. <br> What letter does the name start with?';
         document.getElementById('answer-div-easy').style.display = 'flex;';
@@ -219,12 +218,12 @@ function startNewRound(difficulty) {
     if (lifesRemaining == 0) {
         gameOver(difficulty);
         setTimeout(resetScores, 2000);
-    } else if (currentQuestionNo <= 10) {
-            correctAnswer = '';
-            displayQuestion(difficulty);
-    } else {
+    } else if (currentQuestionNo > 10) {
         gameOver(difficulty);
-        setTimeout(resetScores, 2000);
+        setTimeout(resetScores, 2000); 
+    } else {
+        correctAnswer = '';
+        displayQuestion(difficulty);
     }
 }
 
@@ -358,7 +357,17 @@ function getRandomAlphabet() {
 function gameOver(difficulty) {
     document.getElementById("message").innerHTML = `Game over. Your score: <span style="color:#c20000; font-size:2rem">${score}</span>. <br> Try again!`;
     document.getElementById("result-modal").style.display = "block";
-    
+    if (difficulty == 'easy') {
+        answers[0].removeEventListener('click', function () {
+        checkAnswer('easy', this);
+    });
+    answers[1].removeEventListener('click', function () {
+        checkAnswer('easy', this);
+    });
+    answers[2].removeEventListener('click', function () {
+        checkAnswer('easy', this);
+    });
+    }
     startGame(difficulty);
 }
 /**
