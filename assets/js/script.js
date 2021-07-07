@@ -365,9 +365,9 @@ function gameOver(difficulty) {
     document.getElementById("result-modal").style.display = "block";
     if (difficulty == 'easy') {
         resetScores()
-        answers[0].removeEventListener('click', function ());
-        answers[1].removeEventListener('click', function ());
-        answers[2].removeEventListener('click', function ());
+        answers[0].removeEventListener('click', function () {});
+        answers[1].removeEventListener('click', function () {});
+        answers[2].removeEventListener('click', function () {});
         console.log('remove listeners')
     }
     startGame(difficulty);

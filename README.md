@@ -4,6 +4,8 @@ A simple webbased application targeted at small kids aiming at practicing spelli
 
 Love letters game is based on a simple spelling challenge. The game displays picture and asks about the name of presented item. On the easier lever targeting younger players are asked to choose the first letter of items name (by clicking with the mouse or choosing letter on keybord). Older users are asked to type while name of presented item using the keybord. The correct/wrong answers will be counted resulting in a win or loose.
 
+![Mockup](assets/images/mockup.png)
+
 ## UX
 
 ### Learn spelling - game for kids
