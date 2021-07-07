@@ -258,7 +258,7 @@ function checkAnswer(difficulty, userInputNode) {
 }
 function showNextQuestionInit(difficulty, timeout) {
   const timeoutRef = setTimeout(() => {
-    showNextQuestion(difficulty);
+    startNewRound(difficulty);
     clearTimeout(timeoutRef);
   }, timeout);
 }
