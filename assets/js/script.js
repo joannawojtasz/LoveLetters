@@ -145,9 +145,9 @@ function getCheckedValueFromRadioButtons(buttons) {
 function startGame(difficulty) {
   questions = QUESTION_BANK.sort(() => 0.5 - Math.random()).slice(0, TOTAL_QUESTIONS); // Akshat Garg
   if (difficulty == 'easy') {
-    answers.forEach(eachAnswer => {
+    for (eachAnswer of answers) {
       eachAnswer.addEventListener('click', answerButtonClickListener);
-    });
+    }
   }
   displayQuestion(difficulty);
 }
@@ -342,9 +342,9 @@ function gameOver(difficulty) {
     document.getElementById("result-modal").style.display = "block";
     if (difficulty == 'easy') {
       resetScores();
-      answers.forEach(eachAnswer => {
+      for (eachAnswer of answers) {
         eachAnswer.removeEventListener('click', answerButtonClickListener);
-      });
+      }
     }
     startGame(difficulty);
 }
