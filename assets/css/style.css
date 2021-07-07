@@ -433,7 +433,7 @@ form {
 }
 
 #play, #restart {
-    width: 250px;
+    width: 175px;
     background-color: #009700;
     display: block;
     padding: 10px 30px;
@@ -526,6 +526,7 @@ form {
     .pulse-button {
         line-height: 50px;
         width: 150px;
+        font-size: 1.2rem;
     }
 
     #rules-modal .modal-content {
@@ -610,11 +611,12 @@ form {
 
     #play, #restart {
         padding: 25px 50px;
+        width: 175px;
     }
 
     #play h2, #restart h2{
         letter-spacing: 1px;
-        font-size: 2rem;
+        font-size: 1rem;
         
     }
 
