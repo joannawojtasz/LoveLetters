@@ -201,6 +201,7 @@ function displayQuestion(difficulty) {
         document.getElementById('answer-div-medium').style.display = 'block';
         correctAnswer = currentQuestionData.name;
         let useranswer = document.getElementById('useranswer');
+        useranswer.disabled = false;
         useranswer.focus();
         useranswer.onkeyup = function () {
             checkAnswer('medium', useranswer);
@@ -214,7 +215,8 @@ function displayQuestion(difficulty) {
  * checks if score allows continuing the game and
  * calls for updateScores and displayQuestion */
 function startNewRound(difficulty) {
-    updateScores();
+    currentQuestionNo++
+    console.log(currentQuestionNo); 
     if (lifesRemaining == 0) {
         gameOver(difficulty);
         setTimeout(resetScores, 2000);
@@ -224,6 +226,7 @@ function startNewRound(difficulty) {
     } else {
         correctAnswer = '';
         displayQuestion(difficulty);
+        updateScores()
     }
 }
 
@@ -243,6 +246,7 @@ function checkAnswer(difficulty, useranswer) {
             useranswer.style.color = '#fff';
             lifesRemaining -= 1;
             setTimeout(showcorrectanswer, 100);
+            updateLifesCount();
         }
         setTimeout(continueEasyGame, 500);
 
@@ -262,7 +266,8 @@ function checkAnswer(difficulty, useranswer) {
             } else if (fail < 5) {
                 fail += 1;
             } else {
-                useranswer.onkeyup = function() {};
+                useranswer.onkeyup = function () {};
+                useranswer.disabled = true;
                 showcorrectanswer('medium');
                 setTimeout(continueMediumGame, 1500);
             }
@@ -376,18 +381,16 @@ function gameOver(difficulty) {
  */
 function resetScores() {
     document.getElementById("result-modal").style.display = "none";
-    score = 0;
+    score = 1;
     currentQuestionNo = 0;
     lifesRemaining = TOTAL_LIFES;
     updateScores()
 }
 
 /**
- * increments the currentQuestionNo 
- * and call for updating score information displayed
+ * calls for updating score information displayed
  */
 function updateScores() {
-    currentQuestionNo++;
     updateQuestionCount();
     updateLifesCount();
 }
