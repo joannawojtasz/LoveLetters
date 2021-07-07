@@ -363,15 +363,9 @@ function gameOver(difficulty) {
     document.getElementById("message").innerHTML = `Game over. Your score: <span style="color:#c20000; font-size:2rem">${score}</span>. <br> Try again!`;
     document.getElementById("result-modal").style.display = "block";
     if (difficulty == 'easy') {
-        answers[0].removeEventListener('click', function () {
-        checkAnswer('easy', this);
-    });
-    answers[1].removeEventListener('click', function () {
-        checkAnswer('easy', this);
-    });
-    answers[2].removeEventListener('click', function () {
-        checkAnswer('easy', this);
-    });
+        answers[0].removeEventListener('click', function () {});
+    answers[1].removeEventListener('click', function () {});
+    answers[2].removeEventListener('click', function () {});
     }
     startGame(difficulty);
 }
