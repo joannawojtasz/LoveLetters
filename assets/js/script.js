@@ -1,5 +1,3 @@
-
-
 /* on load take values from url and start game*/
 window.onload = function () {
     console.log('page loaded')
@@ -32,17 +30,10 @@ document.getElementById('reset').onclick = function () {
 };
 document.getElementsByTagName('form')[0].addEventListener("submit", play);
 /////////////////////////////////////////////////////////////////////////////////////////////////
-
-let score = 0;
-let currentQuestionNo = 1;
-let lifesRemaining = TOTAL_LIFES;
-let correctAnswer = '';
-let answers = document.getElementsByClassName('answer');
-let questions = [];
-let failedInputAttempts = 0;
-let difficulty = 'easy';
 const TOTAL_LIFES = 3;
 const TOTAL_QUESTIONS = 10;
+
+
 ///////////////////////////////
 
 
@@ -117,7 +108,14 @@ const QUESTION_BANK = [{
 ];
 
 /////////////////////////////////
-
+let score = 0;
+let currentQuestionNo = 1;
+let lifesRemaining = TOTAL_LIFES;
+let correctAnswer = '';
+let answers = document.getElementsByClassName('answer');
+let questions = [];
+let failedInputAttempts = 0;
+let difficulty = 'easy';
 
 /**
  * Setup game according to data from the form
