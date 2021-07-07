@@ -38,7 +38,7 @@
         </div>
         <div id="opengame">
             <span class = "pulse-button">
-             Play!
+              <a href="game.html" id="opengame">Play!</a>  
             </span>
             
         </div>
@@ -52,58 +52,6 @@
             <a href="#index.html" id="about">About</a>
         </div>
     </div>
-
-    <!-- The Modals prepared according to W3schools.com example -->
- 
-    <div id="form-modal" class="modal">
-        <div class="modal-content">
-            <form action="game.html" method="GET">
-                <div class="form-div">
-                    <label for="name">Players name:</label>
-                    <input type="name" name="name" id="name" placeholder="Name" pattern="[a-zA-Z]{0,40}" required>
-                </div>
-                <div class="form-div">
-                    <p>Age:</p>
-
-                    <div class="age" id="easy-div">
-                        <input type="radio" id="easy" name="age" value="easy" class="age-input" required>
-                        <label for="easy"> &lt; 6</label>
-                    </div>
-
-                    <div class="age" id="medium-div">
-                        <input type="radio" id="medium" name="age" value="medium" class="age-input">
-                        <label for="medium"> 6 &gt;</label>
-                    </div>
-                </div>
-                <div class="form-div">
-                    <p>Favourite color</p>
-                    <label class="container">
-                        <input type="radio" name="color" value="green" class="colors" required>
-                        <span class="checkmark" id="green"></span>
-                    </label>
-                    <label class="container">
-                        <input type="radio" name="color" value="blue" class="colors">
-                        <span class="checkmark" id="blue"></span>
-                    </label>
-                    <label class="container">
-                        <input type="radio" name="color" value="red" class="colors">
-                        <span class="checkmark" id="red"></span>
-                    </label>
-                    <label class="container">
-                        <input type="radio" name="color" value="yellow" class="colors">
-                        <span class="checkmark" id="yellow"></span>
-                    </label>
-                </div>
-
-                <button id="play" type="submit" value="submit">
-                    <h2>Start!</h2>
-                </button>
-            </form>
-        </div>
-
-
-    </div>
-
 
     <div id="rules-modal" class="modal information">
 
@@ -144,7 +92,6 @@
     </div>
     <script src="assets/js/index.js"></script>
 
- 
 </body>
 
 </html>

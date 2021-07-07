@@ -1,8 +1,28 @@
-/* on load display initial modal
-with possibility to close the window or enter the game*/
+///////////////////////////
+let score = 0;
+let currentQuestionNo = 1;
+let lifesRemaining = TOTAL_LIFES;
+let correctAnswer = '';
+let answers = document.getElementsByClassName('answer');
+let questions = [];
+let failedInputAttempts = 0;
+let difficulty = 'easy';
+///////////////////////////////
+
+/* on load take values from url and start game*/
 window.onload = function () {
-    document.getElementById("form-modal").style.display = "block";
+var url_string = window.location.href;
+var url = new URL(url_string);
+var username = url.searchParams.get("name");
+var difficulty = url.searchParams.get("age");
+var color = url.searchParams.get("color");
+ let displayname = document.getElementById('username');
+    displayname.innerHTML = username.toUpperCase();
+    displayname.style.color = color;
+    startGame(difficulty);
 };
+
+
 document.getElementsByClassName("close")[0].onclick = function () {
     document.getElementById("result-modal").style.display = "none";
 };
@@ -92,20 +112,11 @@ const QUESTION_BANK = [{
 const TOTAL_LIFES = 3;
 const TOTAL_QUESTIONS = 10;
 /////////////////////////////////
-///////////////////////////
-let score = 0;
-let currentQuestionNo = 1;
-let lifesRemaining = TOTAL_LIFES;
-let correctAnswer = '';
-let answers = document.getElementsByClassName('answer');
-let questions = [];
-let failedInputAttempts = 0;
-let difficulty = 'easy';
-///////////////////////////////
+
 
 /**
  * Setup game according to data from the form
- * call for new game start
+ * call for new game
  */
 function play(event) {
     event.preventDefault();
