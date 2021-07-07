@@ -167,7 +167,7 @@ function displayQuestion(difficulty) {
     task.innerHTML = 'Name the item on the picture. <br> What letter does the name start with?';
     document.getElementById('answer-div-easy').style.display = 'flex;';
     document.getElementById('answer-div-medium').style.display = 'none';
-    correctAnswer = currentQuestionData.name.charAt(0).toUpperCase();
+    correctAnswer = currentQuestionData.name.toUpperCase();
     //get 3 random letters in answer boxes
     for (let answer of answers) {
         answer.style.backgroundColor = '#fff';
@@ -179,13 +179,12 @@ function displayQuestion(difficulty) {
         answer.innerHTML = letter;
     }
     // Replace any of the 3 with correct answer
-    answers[Math.floor(Math.random() * answers.length)].innerHTML = correctAnswer;
+    answers[Math.floor(Math.random() * answers.length)].innerHTML = correctAnswer.charAt(0);
   } else if (difficulty == "medium") {
     resetInputField();
     task.innerHTML = 'Name the item on the picture.';
     document.getElementById('answer-div-easy').style.display = 'none';
     document.getElementById('answer-div-medium').style.display = 'block';
-    correctAnswer = currentQuestionData.name.toUpperCase();
     let userInput = document.getElementById('useranswer');
     useranswer.disabled = false;
     useranswer.focus();
@@ -219,7 +218,7 @@ function startNewRound(difficulty) {
  */
 function checkAnswer(difficulty, userInputNode) {
   if (difficulty == 'easy') {
-      if (userInputNode.innerHTML == correctAnswer) {
+      if (userInputNode.innerHTML == correctAnswer.charAt(0)) {
         userInputNode.style.backgroundColor = '#009700';
         userInputNode.style.color = '#fff';
         score++;
@@ -250,7 +249,7 @@ function checkAnswer(difficulty, userInputNode) {
             updateLifesCount();
             userInputNode.onkeyup = function () {};
             userInputNode.disabled = true;
-            showCorrectAnswer('medium');
+            showCorrectAnswer();
             showNextQuestionInit(difficulty, 1500);
           }
           userInputNode.style.border = 'solid 10px #c20000';
@@ -266,10 +265,10 @@ function showNextQuestionInit(difficulty, timeout) {
 /**
  * shows user the correct answer
  */
-function showCorrectAnswer(difficulty) {
+function showCorrectAnswer() {
   if (difficulty == 'easy') {
     for (let answer of answers) {
-      if (answer.innerHTML == correctAnswer) {
+      if (answer.innerHTML == correctAnswer.charAt(0)) {
           answer.style.backgroundColor = '#009700';
           answer.style.color = '#fff';
       }
