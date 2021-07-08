@@ -428,6 +428,7 @@ form {
    }
     #navigation {
         max-width: 80%;
+        font-size: 0.7rem;
    }
     .modal-content {
         top: 33%;
@@ -477,11 +478,12 @@ form {
    }
     #game-header h2 {
         font-size: 0.7rem;
+        padding: 1px;
    }
     #game-field {
         margin: -20px auto 0px auto;
         width: 80%;
-        padding-bottom: 3px;
+        padding-bottom: 0px;
    }
     #task {
         font-size: 0.8rem;
@@ -507,10 +509,10 @@ form {
     #answer-div-easy div {
         width: 30%;
         margin: 0 0;
-        font-size: 2rem;
+        font-size: 1rem;
    }
     #answer-div-medium {
-        padding: 5px;
+        padding: 3px;
    }
     .circle {
         height: 10px;
