@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300;500&family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300&family=Poppins&display=swap');
 
 * {
     margin: 0;
@@ -479,8 +479,8 @@ form {
         font-size: 0.7rem;
    }
     #game-field {
-        margin: -20px 30px 0px 30px;
-        width: 30px;
+        margin: -20px auto 0px auto;
+        width: 80%;
         padding-bottom: 3px;
    }
     #task {
@@ -488,7 +488,6 @@ form {
         padding: 2px 0;
    }
     #scores {
-        margin-top: 2px;
         padding: 0px 3px;
    }
     #scores p {
@@ -518,8 +517,8 @@ form {
         width: 10px;
    }
     #question {
-        width: 50vw;
-        height: 50vw;
+        width: 140px;
+        height: 140px;
    }
     #useranswer {
         font-size:0.7rem;
