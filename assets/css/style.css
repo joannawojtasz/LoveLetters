@@ -386,10 +386,11 @@ form {
         margin: 10px 0;
    }
     #game-field {
-        margin: -20px 30px 50px 30px;
+        margin: -20px auto 0px auto;
    }
     #game-header h1 {
         font-size: 2rem;
+        margin: -10px 0;
    }
     #game-header logo{
         height: 26px;
@@ -405,8 +406,8 @@ form {
         padding: 5px;
    }
     #question {
-        width: 200px;
-        height: 200px;
+        width: 180px;
+        height: 180px;
    }
     #question-count, #lifes-left {
         width: 35%;
@@ -420,7 +421,10 @@ form {
         width: 15px;
    }
     #answer-div-easy div {
-        font-size: 3rem;
+        font-size: 2rem;
+   }
+   #answer-div-easy{
+       padding: 0;
    }
     #useranswer{
         font-size: 1rem;
@@ -428,7 +432,7 @@ form {
    }
     #navigation {
         max-width: 80%;
-        font-size: 0.7rem;
+        font-size: 0.9rem;
    }
     .modal-content {
         top: 33%;
@@ -471,7 +475,6 @@ form {
    }
     #game-header h1 {
         font-size: 1.7rem;
-        margin: -10px 0;
    }
     #game-header .logo {
         height: 25px;
@@ -481,7 +484,6 @@ form {
         padding: 1px;
    }
     #game-field {
-        margin: -20px auto 0px auto;
         width: 80%;
         padding-bottom: 0px;
    }
@@ -525,6 +527,9 @@ form {
     #useranswer {
         font-size:0.7rem;
         padding: 1px;
+   }
+   #navigation {
+       font-size: 0.7rem;  
    }
     .modal-content {
         position: fixed;
