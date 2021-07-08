@@ -57,13 +57,13 @@ Mockup genarated by [Techsini](https://techsini.com/multi-mockup/)
 
 #### Existing features:
 
-- [Index page](assets/images/Index.png)
+##### [Index page](assets/images/Index.png)
 
 * Index page with a logo, title and and an introduction to the game and a button to start a game. 
 * Modal with form collecting yser information needed to start the game opended at button click. Submitting the modal redirects to the game page passing yser information in the URL.
 * Links to modals presenting rules and information about the game at the bottom of the page.
 
-- [Game page](assets/images/gamepage.png)
+##### [Game page](assets/images/gamepage.png)
 
 * Game page features the same logo as the index page.
 * Scores bar presenting user with the progress of the game, username typed in their favourite color and remaining lifes. The qurrent question number is represented both graphically and in description to provide understanding for users in all age groups.
@@ -123,7 +123,7 @@ No errors found.
 
 #### JavaScript validator
 
-- [] many featrures are available in ES6 
+- [ ] many featrures are available in ES6 
 
 ####  Google Lighthouse Tool
 
@@ -182,6 +182,8 @@ Solution: Rearange the script. Set a new function for displaying result that tur
 * Solution: use othe function to restart the game.
 
 - [x] Several bugs related to typos or errors in JavaScript.
+
+- [ ] At mobile devices the medium game level does not lock the input field when wrong answear is detected, leading to the game counting down lifes.
 
 ### Deployment
 
