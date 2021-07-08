@@ -5,6 +5,8 @@ A simple webbased application targeted at small kids aiming at practicing spelli
 Love letters game is based on a simple spelling challenge. The game displays picture and asks about the name of presented item. On the easier lever targeting younger players are asked to choose the first letter of items name (by clicking with the mouse or choosing letter on keybord). Older users are asked to type while name of presented item using the keybord. The correct/wrong answers will be counted resulting in a win or loose.
 
 ![Mockup](assets/images/mockup.png)
+Mockup genarated by [Techsini](https://techsini.com/multi-mockup/)
+
 
 ## UX
 
@@ -44,7 +46,7 @@ Love letters game is based on a simple spelling challenge. The game displays pic
 
 ### Changes
 
-* Index page was added for clarity. 
+* Index page was added for clarity after the page was deployed. 
 * Rules and About were introduced
 * Initial form was moved to front page
 * The rules were udjusted (3 attempts at medium level)
@@ -124,15 +126,32 @@ No errors found.
 
 ####  Google Lighthouse Tool
 
-Google Lighthouse tools scores were satisfying. 
+Google Lighthouse tools returned all scores above 95%. 
 
-![scores for mobile version](assets/images/mobile.png)
+[scores for mobile version](assets/images/mobile.png)
 
-![scores for desktop version](assets/images/desktop.png)
+[scores for desktop version](assets/images/desktop.png)
 
 ### Manual testing
 
+#### Chrome DevTools
 
+Chrome DevTools were used to test Love letters at different screen sizes and different screen orientations which helped to impreve the responsivness of the game.
+
+#### Different browsers
+
+Love letters was tested at different browsers.
+
+- desktop version was tested at:
+* Google Chrome Version 91.0.4472.77
+* Firefox 89.0
+* Microsoft Edge Version 91.0.864.41
+
+- mobile
+* Chrome at OnePlus
+* Safari at Ipone SE 2020
+
+All of the browsers showed good performance of the webpage.
 
 ### Encountered bugs
 - [x] game does not work
@@ -161,7 +180,20 @@ Solution: Rearange the script. Set a new function for displaying result that tur
 * Reason: Error in setTimeout function. setTimeout cannot pass value to displayQuestion function.
 * Solution: use othe function to restart the game.
 
+- [x] Several bugs related to typos or errors in JavaScript.
+
 ### Deployment
+
+Love letters site was deployed to GitHub pages. The steps to deploy are as follows:
+
+In the GitHub repository, navigate to the Settings tab
+From the source section drop-down menu, select the Master Branch
+Once the master branch has been selected, the page will be automatically refreshed with a detailed ribbon display to indicate the successful deployment.
+(Description by Code Institue)
+
+The live link can be found here - [Love letters](https://joannawojtasz.github.io/LoveLetters/)
+
+The deployment of the page did not provide any errors.
 
 ### Credits
 * Modals were buid based on code from w3 schools example
@@ -173,4 +205,9 @@ Solution: Rearange the script. Set a new function for displaying result that tur
 [CSS Animations](https://www.w3schools.com/css/css3_animations.asp)
 
 * Parts of the JavaScript were wrote with kind help of Akshat Garg (mentor)
+
+* Timouts were build based on w3 scools examples [Window setTimeout() Method](https://www.w3schools.com/jsref/met_win_settimeout.asp)
+
+* To obtain data from URL example from sitepoint was followed [Quick Tip: Get URL Parameters with JavaScript](https://www.sitepoint.com/get-url-parameters-with-javascript/)
+
 
