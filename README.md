@@ -1,8 +1,10 @@
 # Love letters 1.1.0
 
-A simple webbased application targeted at small kids aiming at practicing spelling. To start the application a parent/care taker needs to enter initial information about the user such as name and age. The age is used to choose one of the two levels of difficulty in the game.
+A simple webbased application targeted to parents with small kids aiming at practicing spelling. To start the application a parent/care taker needs to enter initial information about the user such as name and age. The age is used to choose one of the two levels of difficulty in the game. Moreover users favourite color is used in the game display.
 
-Love letters game is based on a simple spelling challenge. The game displays picture and asks about the name of presented item. On the easier lever targeting younger players are asked to choose the first letter of items name (by clicking with the mouse or choosing letter on keybord). Older users are asked to type while name of presented item using the keybord. The correct/wrong answers will be counted resulting in a win or loose.
+Love letters game is based on a simple spelling challenge. The game displays picture and asks about the name of presented item. On the easier lever targeting younger players are asked to choose the first letter of items name (by clicking with the mouse). Older users are asked to type while name of presented item using the keybord. The correct/wrong answers will be counted resulting in a win or loose.
+
+Love letters helps to learn spelling and provides opportunitity for family time!
 
 ![Mockup](assets/images/mockup.png)
 Mockup genarated by [Techsini](https://techsini.com/multi-mockup/)
@@ -55,17 +57,17 @@ Mockup genarated by [Techsini](https://techsini.com/multi-mockup/)
 
 #### Existing features:
 
-- Index page
+- [Index page](assets/images/Index.png)
 
 * Index page with a logo, title and and an introduction to the game and a button to start a game. 
 * Modal with form collecting yser information needed to start the game opended at button click. Submitting the modal redirects to the game page passing yser information in the URL.
 * Links to modals presenting rules and information about the game at the bottom of the page.
 
-- Game page
+- [Game page](assets/images/gamepage.png)
 
 * Game page features the same logo as the index page.
-* Scores bar presenting the progress of the game, username typed in their favourite color and remaining lifes. 
-* Game field contains the task description, question picture and answer box/boxes.
+* Scores bar presenting user with the progress of the game, username typed in their favourite color and remaining lifes. The qurrent question number is represented both graphically and in description to provide understanding for users in all age groups.
+* Game field contains the task description, question picture and answer box/boxes. The design is simple to enable intuitive understanding by the younger users.
 * Love letters game offers user two different difficulty levels.
 * The task is selected according to choosen level.
 * Question picture selected randomly from the question bank.
@@ -122,7 +124,6 @@ No errors found.
 #### JavaScript validator
 
 - [] many featrures are available in ES6 
-
 
 ####  Google Lighthouse Tool
 
