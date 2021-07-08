@@ -238,7 +238,7 @@ function checkAnswer(difficulty, userInputNode) {
             userInputNode.style.color = '#fff';
             lifesRemaining -= 1;
             const timeoutRef = setTimeout(() => { // byAkshat Garg
-                showCorrectAnswer();
+                showCorrectAnswer(difficulty);
                 clearTimeout(timeoutRef);
             }, 100);
             updateLifesCount();
@@ -259,7 +259,7 @@ function checkAnswer(difficulty, userInputNode) {
                 lifesRemaining -= 1;
                 updateLifesCount();
                 userInputNode.disabled = true;
-                showCorrectAnswer();
+                showCorrectAnswer(difficulty);
                 showNextQuestionInit(difficulty, 2500);
             }
             userInputNode.style.border = 'solid 10px #c20000';
@@ -280,7 +280,7 @@ function showNextQuestionInit(difficulty, timeout) {
 /**
  * shows user the correct answer
  */
-function showCorrectAnswer() {
+function showCorrectAnswer(difficulty) {
     if (difficulty == 'easy') {
         for (let answer of answers) {
             if (answer.innerHTML == correctAnswer.charAt(0)) {
