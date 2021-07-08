@@ -12,33 +12,35 @@ Love letters game is based on a simple spelling challenge. The game displays pic
 
 ### User stories
 
-* My son is learning to recognize letters. He's constantly asking questions about how words are spelled. He would also work at the computer like his mommy. It would make him so happy to be able to play and learn letters with help of the computer.
+1. My son is learning to recognize letters. He's constantly asking questions about how words are spelled. He would also work at the computer like his mommy. It would make him so happy to be able to play and learn letters with help of the computer.
 
-* We can not avoid young generations early conntacts with the computer screen. However, we have choice to make this contact valueble. I would like my chlildren to learn while they are using the computer. I expect that the application website will not allow the kid for unnecessary interaction - I don't want to reset a game for my son too often. 
+2. We can not avoid young generations early conntacts with the computer screen. However, we have choice to make this contact valueble. I would like my chlildren to learn while they are using the computer. I expect that the application website will not allow the kid for unnecessary interaction - I don't want to reset a game for my son too often. 
 
-* the game should be simple enough so my kid would be able to play it alone after I set it up for him.
+3. The game should be simple enough so my 5 yers old kid would be able to play it alone after I set it up for him on iPad.
 
-* A game/website for my toddler should not be too conplicated. It's annoying when I can not figure out something that my 3-year old is supposed to use.
+4. A game/website for my kids should not be too conplicated. It's annoying when I can not figure out something that my 3-year old is supposed to use.
 
-* Too many pictures on the webside could distract kids from the challenges.
+5. Too many pictures on the webside could distract kids from the challenges.
+
+6. We are looking for a game we could play together so that my son can practice his letters. My doughter overly sensitive so I would like to avoid blinking object, bliping noise and so on.
 
 ### Wireframe:
 
 * Start page
 
-[start page](assets/images/start.png)
+[start page wireframe](assets/images/start.png)
 
 * User details form
 
-[form](assets/images/form.png)
+[form wireframe](assets/images/form.png)
 
 * Easier version
 
-[easy game](assets/images/easy.png)
+[easy game wireframe](assets/images/easy.png)
 
 * More difficult version
 
-[medium page](assets/images/medium.png) 
+[medium page wireframe](assets/images/medium.png) 
 
 ### Changes
 
@@ -72,16 +74,7 @@ Love letters game is based on a simple spelling challenge. The game displays pic
 
 * More questions could be easily added to the questions bank.
 * Game offers possibility of creating additional advanced level with more difficult words or less attempts.
-
-
-Love letters gives possibility to add new questions and eaven an advanced difficulty level.
-
-1. For adding more pictures: 
-
-* Add pictures to pictures folder and modify question array by adding new records.
-
-2. For adding new difficulty level.
-
+* Adding possibility to take keybord answers would for easy level would be a valuable feature.
 
 ## Testing
 
@@ -89,7 +82,29 @@ Love letters gives possibility to add new questions and eaven an advanced diffic
 
 The visitors of the webpage expect/want/need:
 
-### Manual testing
+1. My son is learning to recognize letters. He's constantly asking questions about how words are spelled. He would also work at the computer like his mommy. It would make him so happy to be able to play and learn letters with help of the computer.
+
+- Love letters was design for kids to learna and enjoy spelling. It is working on both mobile and desktop applications.
+
+2. We can not avoid young generations early conntacts with the computer screen. However, we have choice to make this contact valueble. I would like my chlildren to learn while they are using the computer. I expect that the application website will not allow the kid for unnecessary interaction - I don't want to reset a game for my son too often. 
+
+- The game is simple to play and agter its over one button click restarts it with the same settings. There are navigation buttons to return on the home page and reset the game but they are not highlighted to avoid unnecessary interaction by the youngest users.
+
+3. The game should be simple enough so my 5 yers old kid would be able to play it alone after I set it up for him on iPad.
+
+- The game has easy navigation with buttons in bright colors so that user could easy setuo a game for themselves. 
+
+4. A game/website for my kids should not be too conplicated. It's annoying when I can not figure out something that my 3-year old is supposed to use.
+
+- The game has easy navigation with buttons in bright colors so that user could easy setuo a game for themselves, moreover rules can be found on the main page for clarity.
+
+5. Too many pictures on the webside could distract kids from the challenges.
+
+- The design is simple without too many distracting elements. However, to make it fun for young users the username can be setup in players favorite color.
+
+6. We are looking for a game we could play together so that my son doughter practice his letters. My doughter overly sensitive so I would like to avoid blinking object, bliping noise and so on.
+
+- The game does not blink havily, it is silent and has simple design in order not to overstimulate the player. Ilustrations used in the questions are kept relatively simple.
 
 ### Validator testing
 
@@ -103,9 +118,19 @@ The visitors of the webpage expect/want/need:
 No errors found.
 
 #### JavaScript validator
-- [] many featrures are available in ES6 
-- [x] 
 
+- [] many featrures are available in ES6 
+
+
+####  Google Lighthouse Tool
+
+Google Lighthouse tools scores were satisfying. 
+
+![scores for mobile version](assets/images/mobile.png)
+
+![scores for desktop version](assets/images/desktop.png)
+
+### Manual testing
 
 
 
@@ -142,14 +167,10 @@ Solution: Rearange the script. Set a new function for displaying result that tur
 * Modals were buid based on code from w3 schools example
 [How TO - CSS/JS Modal](https://www.w3schools.com/howto/howto_css_modals.asp)
 
-* The buttons based on radio buttons were build based on w3 examples and petrabarus's  jsfiddles
-
-[How TO - Custom Checkbox](https://jsfiddle.net/petrabarus/pPgS7/)  
-
-[Remove Circle Button in Radio](https://jsfiddle.net/petrabarus/pPgS7/)
+* The buttons based on radio buttons were build based on w3 examples and petrabarus's  jsfiddles [How TO - Custom Checkbox](https://jsfiddle.net/petrabarus/pPgS7/) [Remove Circle Button in Radio](https://jsfiddle.net/petrabarus/pPgS7/)
 
 * Animation was created according to w3 schools instructions
 [CSS Animations](https://www.w3schools.com/css/css3_animations.asp)
 
-* Shuffling array Akshat Garg (mentor)
+* Parts of the JavaScript were wrote with kind help of Akshat Garg (mentor)
 
