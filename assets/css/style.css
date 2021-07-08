@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300;500&family=Poppins&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -40,7 +42,7 @@ h2 {
 #welcome {
     width: 100%;
     font-size: 2rem;
-    font-weight: 900;
+    font-weight: 500;
     text-align: left;
     padding: 25px;
 }
@@ -93,7 +95,7 @@ ul {
     color: #fff;
     font-size: 3rem;
     font-family: 'Mulish', sans-serif;
-    font-weight: 900;
+    font-weight: 500;
 }
 /* --------- Navigation */
 #navigation {
@@ -145,7 +147,7 @@ a {
     width: 40%;
     color: #000;
     font-size: 2rem;
-    font-weight: 900;
+    font-weight: 500;
     display: flex;
     margin: 4px auto;
     justify-content: center;
@@ -360,7 +362,7 @@ form {
     letter-spacing: 1px;
     font-size: 2rem;
     font-family: 'Mulish', sans-serif;
-    font-weight: 900;
+    font-weight: 500;
     padding: 10px 30px;
     border-radius: 5%;
     border-style: outset;
@@ -386,6 +388,26 @@ form {
     #game-field {
         margin: -20px 30px 50px 30px;
    }
+    #game-header h1 {
+        font-size: 2rem;
+   }
+    #game-header logo{
+        height: 26px;
+   }
+    #scores{
+        margin-top: 25px;
+        padding: 3px;
+   }
+    #scores p {
+        font-size: 0.8rem;
+   }
+    #task {
+        padding: 5px;
+   }
+    #question {
+        width: 200px;
+        height: 200px;
+   }
     #question-count, #lifes-left {
         width: 35%;
    }
@@ -399,6 +421,10 @@ form {
    }
     #answer-div-easy div {
         font-size: 3rem;
+   }
+    #useranswer{
+        font-size: 1rem;
+        padding: 3px;
    }
     #navigation {
         max-width: 80%;
@@ -442,22 +468,28 @@ form {
     ul {
         font-size: 0.9rem;
    }
-   #game-header h1 {
-    font-size: 2rem;
-    margin: -5px 0;
-}
-#game-header .logo {
-    height: 25px;
-}
-#game-header h2 {
-    font-size: 0.7rem;
-}
+    #game-header h1 {
+        font-size: 1.7rem;
+        margin: -10px 0;
+   }
+    #game-header .logo {
+        height: 25px;
+   }
+    #game-header h2 {
+        font-size: 0.7rem;
+   }
+    #game-field {
+        margin: -20px 30px 0px 30px;
+        width: 30px;
+        padding-bottom: 3px;
+   }
     #task {
         font-size: 0.8rem;
-        padding: 5px 0;
+        padding: 2px 0;
    }
-   #scores {
-    padding: 0px 3px;
+    #scores {
+        margin-top: 2px;
+        padding: 0px 3px;
    }
     #scores p {
         font-size: 0.7rem;
@@ -478,9 +510,9 @@ form {
         margin: 0 0;
         font-size: 2rem;
    }
-   #answer-div-medium {
-    padding: 5px;
-}
+    #answer-div-medium {
+        padding: 5px;
+   }
     .circle {
         height: 10px;
         width: 10px;
@@ -522,7 +554,6 @@ form {
         padding: 25px 20px;
         width: 175px;
         margin: 5px auto;
-
         letter-spacing: 1px;
         font-size: 1rem;
    }
